@@ -6,7 +6,7 @@
 					<h2 class="p-3">Login</h2>
 				</div>
 				<div class="card-body">
-					<%= form_for(@user, url: session_path(@user)) do |f| %>
+					<%= form_for(@user, url: login_path(@user)) do |f| %>
 						<div class="mb-4">
 							<%= f.label :email, class: "form-label" %><br/>
 							<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
@@ -24,13 +24,17 @@
 									<%= f.label :remember_me, class: "form-label" %>
 								</div>
 								<div class="col-6">
-									<%= link_to "Forgot your password?", new_password_path(@user) %>
+									<%= link_to "Forgot your password?", forgot_password_path(@user) %>
 								</div>
 							</div>
 						<% end %>
 
 						<div class="d-grid">
 							<%= f.submit "Log in", class: "btn text-light main-bg" %>
+						</div>
+						<p class="text-center my-1"> OR </p>
+						<div class="d-grid">
+							<%= link_to "Sign up", new_registration_path(resource_name), class: "btn text-light main-bg" %><br />
 						</div>
 					<% end %>
 				</div>

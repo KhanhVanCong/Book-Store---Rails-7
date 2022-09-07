@@ -1,22 +1,26 @@
 # frozen_string_literal: true
 
 class Users::SessionsController < Devise::SessionsController
+  layout 'authentication'
+
   # before_action :configure_sign_in_params, only: [:create]
 
   # GET /resource/sign_in
-  def new
-    super
-    # render :new, layout: false
-  end
+  # def new
+  #  super
+  # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    # super
+    flash.now[:notice] = "welcome"
+    puts notice
+    redirect_to forgot_password_path
+  end
 
   # DELETE /resource/sign_out
   # def destroy
-  #   super
+  #   redirect_to login_path
   # end
 
   # protected
