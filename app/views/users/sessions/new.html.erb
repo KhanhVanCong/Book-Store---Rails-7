@@ -1,0 +1,40 @@
+<div class="container">
+	<div class="row justify-content-center mt-5">
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card shadow">
+				<div class="card-title text-center border-bottom">
+					<h2 class="p-3">Login</h2>
+				</div>
+				<div class="card-body">
+					<%= form_for(@user, url: session_path(@user)) do |f| %>
+						<div class="mb-4">
+							<%= f.label :email, class: "form-label" %><br/>
+							<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+						</div>
+
+						<div class="mb-4">
+							<%= f.label :password, class: "form-label" %><br/>
+							<%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+						</div>
+
+						<% if devise_mapping.rememberable? %>
+							<div class="row mb-4">
+								<div class="col-6">
+									<%= f.check_box :remember_me, class: "form-check-input" %>
+									<%= f.label :remember_me, class: "form-label" %>
+								</div>
+								<div class="col-6">
+									<%= link_to "Forgot your password?", new_password_path(@user) %>
+								</div>
+							</div>
+						<% end %>
+
+						<div class="d-grid">
+							<%= f.submit "Log in", class: "btn text-light main-bg" %>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
