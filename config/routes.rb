@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-  get 'home/index'
-  devise_for :users, module: "users", skip: :session
+  devise_for :users, module: "users", skip: [:session, :registration]
 
   as :user do
-    get "login" => "users/sessions#new"
+    get "login" => "users/sessions#new", as: :new_user_session
     post "login" => "users/sessions#create"
     get "logout" => "users/sessions#destroy"
     get "sign_up" => "users/registrations#new"
+    post "sign_up" => "users/registrations#create"
     get "forgot_password" => "users/passwords#new"
   end
 

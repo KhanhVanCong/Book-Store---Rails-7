@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: ubuntu
-  password: '@binhthuan'
+  username: <%= ENV["DB_USERNAME"] %>
+  password: <%= ENV["DB_PASSWORD"] %>
   host: localhost
   port: 5432
   # For details on connection pooling, see Rails configuration guide

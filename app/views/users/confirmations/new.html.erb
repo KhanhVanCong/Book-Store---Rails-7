@@ -1,16 +1,30 @@
-<h2>Resend confirmation instructions</h2>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card shadow">
+        <div class="card-title text-center border-bottom">
+          <h2 class="p-3">Resend confirmation</h2>
+        </div>
+        <div class="card-body">
+          <%= render 'users/shared/notice_messages' %>
+          <%= form_for(@user, url: confirmation_path(@user), html: { method: :post }) do |f| %>
+            <%= render "users/shared/error_messages", resource: resource %>
+            <div class="mb-4">
+              <%= f.label :email, class: "form-label" %><br />
+              <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (@user.pending_reconfirmation? ? @user.unconfirmed_email : @user.email) %>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+            <div class="d-grid">
+              <%= f.submit "Resend confirmation", class: "btn text-light main-bg" %>
+            </div>
+            <p class="text-center my-1"> OR </p>
+            <div class="d-grid">
+              <%= link_to "Sign up", sign_up_path, class: "btn text-light main-bg" %><br />
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <div class="actions">
-    <%= f.submit "Resend confirmation instructions" %>
-  </div>
-<% end %>
-
-<%= render "users/shared/links" %>

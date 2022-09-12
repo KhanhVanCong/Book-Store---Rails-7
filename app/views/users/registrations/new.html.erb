@@ -6,12 +6,24 @@
           <h2 class="p-3">Sign up</h2>
         </div>
         <div class="card-body">
-          <%= form_for(@user, url: registration_path(@user)) do |f| %>
+          <%= form_for(@user, url: sign_up_path(@user)) do |f| %>
             <%= render "users/shared/error_messages", resource: resource %>
 
             <div class="mb-4">
+              <%= f.label :first_name, class: "form-label" %><br/>
+              <%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>
+            </div>
+
+            <div class="mb-4">
+              <%= f.label :last_name, class: "form-label" %><br/>
+              <%= f.text_field :last_name, class: "form-control text-capitalize" %>
+            </div>
+
+
+
+            <div class="mb-4">
               <%= f.label :email, class: "form-label" %><br/>
-              <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, class: "form-control", autocomplete: "email" %>
             </div>
 
             <div class="mb-4">
