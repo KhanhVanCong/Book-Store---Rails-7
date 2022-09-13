@@ -1,0 +1,68 @@
+<!-- NAVBAR -->
+<section id="bs-header" class="header">
+	<div class="container">
+		<div class="row">
+			<div class="col-12 col-md-12 col-lg-2 header__brand">
+				<a href="./index.html">
+					<%= image_tag "logo.png", alt: "Logo", class: "header__logo" %>
+				</a>
+			</div>
+			<div class="col-3 col-md-2 col-lg-7 navbar-expand-lg header__menu" id="header-menu">
+				<button class="navbar-toggler header__toggler" type="button">
+					Menu
+				</button>
+				<div class="collapse navbar-collapse justify-content-center" id="navbarNavAltMarkup">
+					<div class="header__close">
+						<div class="header__close-icon">
+							<span aria-hidden="true">&times;</span>
+						</div>
+					</div>
+					<ul class="header__menu-list">
+						<li class="header__menu-item">
+							<a href="./index.html">Home</a>
+						</li>
+						<li class="header__menu-item">
+							<a href="./shop.html">Shop</a>
+						</li>
+						<li class="header__menu-item">
+							<a href="./portfolio.html">Portfolio</a>
+						</li>
+						<li class="header__menu-item">
+							<a href="./author.html">Author</a>
+						</li>
+						<li class="header__menu-item">
+							<a href="./contact.html">Contact</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-9 col-md-10 col-lg-3 header__users">
+				<ul class="header__icon-list">
+					<li class="header__icon-item header__icon-item--flip">
+						<a href="#">
+							<i class="icon_search" aria-hidden="true"></i>
+						</a>
+					</li>
+					<li class="header__icon-item header__icon-item--border header__icon-item--padding-right">
+						<a href="#">
+							<i class="fa fa-heart-o" aria-hidden="true"></i>
+							<span class="header__mini-cart">0</span>
+						</a>
+					</li>
+					<li class="header__icon-item header__icon-item--border header__icon-item--padding-right">
+						<a href="#">
+							<i class="icon_bag_alt" aria-hidden="true"></i>
+							<span class="header__mini-cart">0</span>
+						</a>
+					</li>
+					<li class="header__icon-item header__icon-item--border">
+						<%= link_to login_path do %>
+							<i class="fa fa-user-o" aria-hidden="true"></i>
+						<% end %>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- End NAVBAR -->

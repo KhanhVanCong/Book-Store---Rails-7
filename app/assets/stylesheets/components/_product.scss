@@ -1,0 +1,253 @@
+/* PRODUCTION */
+.production {
+  width: 100%;
+  overflow: hidden;
+
+  &__container {
+    &--pink {
+      background-color: #e6afcd;
+    }
+
+    &--blue {
+      background-color: #96d5e2;
+    }
+
+    &--orange {
+      background-color: #fbadaf;
+    }
+
+    &--padding {
+      padding: 0 1.3rem;
+    }
+  }
+
+  &__block {
+    margin-bottom: 10rem;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    border-left: 1px solid #fff;
+
+    @include responsive(large-mobile) {
+      flex-direction: column;
+    }
+
+    &--white {
+      background-color: #fff;
+    }
+  }
+
+  &__image {
+    flex-basis: 51.06%;
+    position: relative;
+    top: 8rem;
+    padding: 0 5rem;
+
+    @include responsive(large-mobile) {
+      padding: 0 1.5rem;
+    }
+
+    &--small {
+      padding: 0 1.5rem;
+      top: 3rem;
+    }
+
+    &--shadow {
+      box-shadow: 0 0 12px 0 rgba(43, 43, 43, 0.3);
+    }
+  }
+
+  .slick-list {
+    padding-bottom: 9rem !important;
+  }
+}
+
+.product {
+  &__info {
+    color: white;
+    padding-top: 8rem;
+    padding-right: 5rem;
+    flex-basis: 48.34%;
+
+    @include responsive(large-mobile) {
+      padding: 15rem 1.5rem 0;
+    }
+
+    &--small {
+      padding: 4rem 0 1rem;
+
+      @include responsive(large-mobile) {
+        padding: 6rem 1.5rem 1rem;
+      }
+    }
+  }
+
+  &__name-book {
+    font-size: 2.4rem;
+
+    &--small {
+      font-size: 1.6rem;
+      max-width: 190px;
+      max-height: 20px;
+      color: $black-color;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &__anchor {
+    text-transform: capitalize;
+
+    &:hover {
+      color: $pink-color;
+      cursor: pointer;
+    }
+  }
+
+  &__link-author,
+  &__name-author {
+    font-size: 1.5rem;
+    font-style: italic;
+    padding: 1.5rem 0;
+
+    &--small {
+      font-size: 1.2rem;
+      color: $grey-light;
+    }
+  }
+
+  &__rating {
+    position: relative;
+    width: 10rem;
+
+    &--brown {
+      color: #666;
+    }
+
+    &--rated {
+      display: inline-block;
+      width: 87%;
+      height: 100%;
+      overflow: hidden;
+      position: absolute;
+      left: 0;
+
+      &--yellow {
+        color: #f7bc3d;
+      }
+
+      &::before {
+        content: '\f005\f005\f005\f005\f005';
+        position: absolute;
+      }
+    }
+
+    &--rated-small {
+      width: 62%;
+
+      &::before {
+        font-size: 1.2rem !important;
+      }
+    }
+
+    &--small::before {
+      font-size: 1.2rem !important;
+    }
+
+    &::before {
+      content: '\f006\f006\f006\f006\f006';
+      font-size: 1.8rem;
+      font-family: FontAwesome;
+      letter-spacing: 0.3rem;
+      position: relative;
+    }
+  }
+
+  &__description {
+    font-size: 1.5rem;
+    padding: 4rem 0;
+    margin-bottom: 8rem;
+  }
+
+  &__price {
+    color: $pink-color;
+    font-size: 1.5rem;
+    font-family: $merri;
+    padding: 2rem 0;
+  }
+
+  &__cart {
+    padding: 1rem 3rem;
+    color: #454545;
+    font-weight: 600;
+    background-color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 13px 29.4px 0.6px rgba(43, 43, 43, 0.25);
+
+    &:hover {
+      color: white;
+      background-color: $pink-color;
+    }
+
+    &--small {
+      position: unset;
+      display: block;
+      text-align: center;
+      color: white;
+      background-color: $pink-color;
+
+      &:hover {
+        background-color: $pink-dark-color;
+      }
+    }
+  }
+
+  &__item {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    color: $grey-light;
+    padding: 1rem 0;
+  }
+
+  &__children {
+    max-height: 0;
+    overflow: hidden;
+    padding-left: 3rem;
+    transition: all 0.5s ease-in-out;
+  }
+
+  &__arrow-icon {
+    &::before {
+      content: "\f106";
+      font-family: FontAwesome;
+      padding: 0 0.3rem;
+      font-size: 1.5rem;
+      color: $grey-light;
+      float: right;
+      cursor: pointer;
+    }
+  }
+
+  &__parent {
+    &--show {
+      & > a {
+        color: $pink-color;
+      }
+
+      .product__children {
+        max-height: 50rem;
+      }
+
+      .product__arrow-icon {
+        &::before {
+          content: "\f107";
+        }
+      }
+    }
+  }
+}

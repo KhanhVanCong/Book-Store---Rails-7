@@ -6,15 +6,21 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+		<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Muli%3A300%2C300i%2C400%2C400i%2C600%2C600i%2C700%2C700i%7CMerriweather%3A300%2C300i%2C400%2C400i%2C700%2C700i%2C900%2C900i%7COpen%2BSans&subset=latin%2Clatin-ext" %>
+		<%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Merriweather:700%7CMuli:700%2C600" %>
+		<%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
-		<div class="container-fluid">
-			<p class="notice"><%= notice %></p>
-			<p class="alert"><%= alert %></p>
-		</div>
+		<%= render "layouts/navbar" %>
+<!--		<div class="container-fluid">-->
+<!--			<p class="notice"><%#= notice %></p>-->
+<!--			<p class="alert"><%#= alert %></p>-->
+<!--		</div>-->
   	<%= yield %>
+		<%= render "layouts/footer" %>
   </body>
 </html>

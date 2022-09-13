@@ -1,0 +1,88 @@
+.common {
+  &__title {
+    font-family: $merri;
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: $black-color;
+    width: 100%;
+    margin-top: 2.5rem;
+    margin-bottom: 5rem !important;
+    padding-left: 1.5rem;
+    text-align: left;
+    text-transform: capitalize;
+    white-space: nowrap;
+
+    @include responsive(large-mobile) {
+      font-size: 2.2rem;
+    }
+
+    &--no-margin {
+      margin: 0 !important;
+    }
+
+    &--center,
+    &--center::after {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    &::after {
+      content: "";
+      display: block;
+      width: 7rem;
+      border-top: 3px solid $pink-color;
+    }
+
+    &--tag {
+      position: relative;
+      border-bottom: 1px solid $line-border-tag-color;
+      padding-left: 0;
+      margin-bottom: 3rem !important;
+      font-size: 2.2rem;
+
+      &::after {
+        position: absolute;
+        border-top-width: 2px;
+      }
+    }
+  }
+
+  &__button {
+    color: #fff;
+    background-color: #f86d72;
+    padding: 1rem 2rem;
+    font-size: 1.8rem;
+    text-transform: capitalize;
+    box-shadow: 0 13px 29.4px 0.6px rgba(43, 43, 43, 0.25);
+
+    &:hover {
+      background-color: #f63c43;
+      color: #fff;
+      opacity: 1;
+    }
+  }
+
+  &__button--no-shadow {
+    box-shadow: none;
+  }
+
+  &__button--arrow {
+    box-shadow: unset;
+    padding: 0.8rem 1rem;
+    font-size: 1.6rem;
+
+    @include responsive(small-mobile) {
+      font-size: 1.4rem;
+      white-space: nowrap;
+      line-height: 3.2rem;
+      height: fit-content;
+    }
+
+    &::after {
+      display: inline-block;
+      content: "\f061";
+      font-family: FontAwesome;
+      margin-left: 1.2rem;
+    }
+  }
+}

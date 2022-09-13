@@ -1,0 +1,44 @@
+.loading {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: #fff;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: 1.5s;
+
+  &--active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrapper {
+    @include centerBox();
+  }
+
+  &__on-sale {
+    position: relative;
+    top: 0;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__dot {
+    position: relative;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #f86d72;
+    animation: cricle-round linear 2s infinite;
+
+    &::before {
+      @include circle-box(5px, 3s);
+    }
+
+    &::after {
+      @include circle-box(15px, 1.5s);
+    }
+  }
+}

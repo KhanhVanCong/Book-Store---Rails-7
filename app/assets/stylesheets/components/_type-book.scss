@@ -1,0 +1,56 @@
+.types-book {
+  padding: 0 5rem;
+  margin: 5rem 0;
+  background-color: #e7e7e7;
+
+  &__icon {
+    width: 6rem;
+    height: 6rem;
+    border-radius: 50%;
+    line-height: 6rem;
+    background-color: #fff;
+    text-align: center;
+    font-size: 2.4rem;
+    color: #666;
+    box-shadow: 0 0 4px 0 rgba(43, 43, 43, 0.65);
+  }
+
+  &__title {
+    font-family: $merri;
+    font-size: 2.1rem;
+    font-weight: 600;
+    padding: 1rem 0;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0 2rem 0.2rem;
+
+    &:hover {
+      .types-book__icon {
+        background-color: $pink-color;
+        color: #fff;
+      }
+
+      .types-book__title {
+        color: $pink-color;
+
+        &:hover {
+          a {
+            color: $pink-color;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    padding-left: 2rem;
+  }
+
+  &__count {
+    font-size: 1.6rem;
+    color: gray;
+  }
+}

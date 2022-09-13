@@ -1,0 +1,102 @@
+.author {
+  text-align: center;
+  font-family: $merri;
+
+  &__container {
+    border-right: 2px solid #fff;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 50%;
+      border-bottom: 2px solid $pink-color;
+      margin: 0 auto;
+      padding: 2rem 0;
+    }
+  }
+
+  &__name {
+    font-size: 2.1rem;
+    text-transform: capitalize;
+    padding: 2rem 0;
+  }
+
+  &__major {
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    color: $dark-gray-color;
+  }
+
+  &__description {
+    font-family: $muli;
+    font-size: 1.4rem;
+    color: #454545;
+    padding: 5rem 0;
+  }
+
+  &__socials {
+    &--medium {
+      font-size: 1.2rem;
+      padding: 0 0.8rem;
+    }
+  }
+
+  .slick-dots li button::before {
+    font-size: 1.2rem;
+  }
+
+  &__box {
+    border: none;
+  }
+
+  &__avatar {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    &--small {
+      width: 80%;
+
+      @include responsive(tablet) {
+        width: 100%;
+      }
+
+      @include responsive(large-mobile) {
+        width: 50%;
+      }
+    }
+  }
+
+  &__thumb {
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__profile {
+    width: 95%;
+    float: right;
+
+    @include responsive(large-mobile) {
+      margin-top: 5rem;
+    }
+  }
+
+  &__info {
+    &--primary {
+      display: inline-block;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: $dark-color;
+      text-transform: capitalize;
+      min-width: 15rem;
+    }
+
+    &--secondary {
+      font-size: 1.5rem;
+      color: $dark-gray-color;
+    }
+  }
+}

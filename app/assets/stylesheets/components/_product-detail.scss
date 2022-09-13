@@ -1,0 +1,84 @@
+.detail {
+  &__thumb {
+    margin-bottom: 2rem;
+    border: 1px solid transparent;
+  }
+
+  &__thumb:hover,
+  &__thumb--active {
+    cursor: pointer;
+    border: 1px solid $pink-color;
+  }
+
+  &__carousel {
+    .slick-arrow.arrow-down {
+      transform: translate(-50%, -100%);
+
+      @include responsive(large-mobile) {
+        transform: translateY(calc(50% + 1rem));
+      }
+    }
+
+    &:hover .slick-arrow.arrow-up {
+      top: 0;
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, -100%);
+
+      @include responsive(large-mobile) {
+        top: 50%;
+        left: 0;
+        transform: translate(calc(-50% + 1rem), calc(-50% - 1rem));
+      }
+    }
+
+    &:hover .slick-arrow.arrow-down {
+      opacity: 1;
+      visibility: visible;
+      transform: translate(-50%, calc(50% - 2rem));
+
+      @include responsive(large-mobile) {
+        top: 50%;
+        left: 100%;
+        transform: translate(calc(-50% - 1rem), calc(-50% - 1rem));
+      }
+    }
+
+    .slick-arrow {
+      position: absolute;
+      transform: translateX(-50%);
+      left: 50%;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      border: 1px solid hsla(0, 0%, 56%, 0.25);
+      box-shadow: 0 0 4.97px 0.03px hsla(0, 0%, 40%, 0.4);
+      line-height: 4rem;
+      font-size: 2.2rem;
+      text-align: center;
+      outline: none;
+      background: transparent;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.5s ease;
+
+      @include responsive(large-mobile) {
+        background: #fff;
+        z-index: 3;
+        transform: translateY(calc(50% + 1rem));
+        top: 0;
+      }
+
+      &:hover {
+        background: $pink-color;
+        color: #fff;
+      }
+    }
+
+    .slick-slide {
+      @include responsive(large-mobile) {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+}

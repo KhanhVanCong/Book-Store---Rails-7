@@ -1,0 +1,19 @@
+.u-center-text {
+  text-align: center !important;
+}
+
+.u-margin-bottom-big {
+  margin-bottom: 8rem !important;
+}
+
+.u-margin-bottom-small {
+  margin-bottom: 1.5rem !important;
+}
+
+.u-margin-top-2-5rem {
+  margin-top: 2.5rem;
+}
+
+.u-center {
+  @include centerBox();
+}

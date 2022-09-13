@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  layout :layout_by_resource
+  # layout :layout_by_resource
 
   protected
 
@@ -11,11 +11,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def layout_by_resource
-      if devise_controller?
-        "authentication"
-      else
-        "application"
-      end
-    end
+    # def layout_by_resource
+    #   if devise_controller?
+    #     "authentication"
+    #   else
+    #     "application"
+    #   end
+    # end
 end

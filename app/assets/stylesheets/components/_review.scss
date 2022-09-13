@@ -1,0 +1,135 @@
+.review {
+  &__detail {
+    display: none;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    padding: 2rem 0;
+  }
+
+  &__star {
+    font-family: FontAwesome;
+    font-size: 1.4rem;
+    display: inline-block;
+    margin: 0 1rem;
+    cursor: pointer;
+
+    @include responsive(small-mobile) {
+      margin: 0 0.2rem;
+    }
+
+    &-1::after {
+      content: "\f006";
+    }
+
+    &-2::after {
+      content: "\f006\f006";
+    }
+
+    &-3::after {
+      content: "\f006\f006\f006";
+    }
+
+    &-4::after {
+      content: "\f006\f006\f006\f006";
+    }
+
+    &-5::after {
+      content: "\f006\f006\f006\f006\f006";
+    }
+  }
+
+  &__star:hover,
+  &__star.active {
+    color: #f7bc3d;
+  }
+
+  &__text {
+    height: 20rem;
+    margin: 3rem 0;
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #f5f5f5;
+    border: none;
+
+    &:hover,
+    &:focus {
+      @extend %inputHover;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    padding: 1rem 2rem;
+    background: #f5f5f5;
+    border: none;
+
+    &:hover,
+    &:focus {
+      @extend %inputHover;
+    }
+  }
+
+  &__btn {
+    border: none;
+    margin-top: 3rem;
+    padding: 1rem 4rem;
+    color: #fff;
+    background: #f86d72;
+
+    &:hover {
+      background: #f63c43;
+    }
+
+    &--large {
+      margin-top: 0;
+      padding: 1rem 7rem;
+    }
+  }
+
+  &__content,
+  &__form {
+    font-size: 1.6rem;
+  }
+
+  &__wrap {
+    @include responsive(large-mobile) {
+      margin-bottom: 3rem;
+    }
+
+    &--required::before {
+      content: "*";
+      color: $pink-dark-color;
+      position: absolute;
+      top: 0;
+      right: 2rem;
+      transform: translate(-50%, 50%);
+    }
+  }
+}
+
+.review__star:hover.review__star-1::after,
+.review__star-1.active::after {
+  content: "\f005";
+}
+
+.review__star:hover.review__star-2::after,
+.review__star-2.active::after {
+  content: "\f005\f005";
+}
+
+.review__star:hover.review__star-3::after,
+.review__star-3.active::after {
+  content: "\f005\f005\f005";
+}
+
+.review__star:hover.review__star-4::after,
+.review__star-4.active::after {
+  content: "\f005\f005\f005\f005";
+}
+
+.review__star:hover.review__star-5::after,
+.review__star-5.active::after {
+  content: "\f005\f005\f005\f005\f005";
+}

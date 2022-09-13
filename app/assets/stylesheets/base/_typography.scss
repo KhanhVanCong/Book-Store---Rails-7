@@ -1,0 +1,91 @@
+body {
+  font-family: $muli;
+  font-size: 1.6rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $merri;
+}
+
+.heading-primary {
+  font-size: 4rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.heading-tertiary {
+  text-transform: uppercase;
+  font-size: 1.6rem;
+  font-family: $muli;
+  font-weight: 400;
+}
+
+.heading-quaternary {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: 600;
+}
+
+.heading-form {
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-family: $muli;
+  font-weight: 800;
+}
+
+.icon__big {
+  font-size: 1.8rem;
+  color: $light-gray-color;
+}
+
+.paragraph {
+  font-size: 1.5rem;
+  font-family: $muli;
+  font-weight: 300;
+  color: $grey-light;
+
+  &--medium {
+    font-size: 1.6rem;
+    font-weight: 500;
+  }
+}
+
+.author__published {
+  font-size: 1.5rem;
+  font-family: $muli;
+  font-weight: 400;
+  color: $grey-light;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.title-page {
+  text-transform: uppercase;
+  transform: rotate(-90deg);
+  transform-origin: 90%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  font-size: 6rem;
+  color: $grey-light;
+  opacity: 0.3;
+  margin-bottom: 0;
+  white-space: nowrap;
+
+  @include responsive(large-mobile) {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: rotate(0deg);
+    margin-top: 5rem;
+    font-size: 5rem;
+  }
+
+  @include responsive(small-mobile) {
+    font-size: 4rem;
+  }
+}

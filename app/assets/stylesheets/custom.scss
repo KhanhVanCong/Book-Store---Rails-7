@@ -1,6 +1,22 @@
-:root{
-  --main-bg:#e91e63;
-}
 .main-bg {
-  background: var(--main-bg) !important;
+  background: $pink-color;
+}
+
+.btn {
+  font-size: 1.6rem;
+  padding: 0.5rem 1rem;
+}
+
+.form-control {
+  padding: 0.75rem 0.95rem;
+  font-size: 1.6rem;
+}
+
+.form-control:focus {
+  border-color: $pink-color;
+  box-shadow: none;
+}
+
+.form-check-input {
+  margin-top: 0.6rem;
 }

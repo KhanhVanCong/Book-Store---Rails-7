@@ -1,0 +1,29 @@
+@mixin large-desktop {
+  @media only screen and (min-width: 120em) and (max-width: 120em) {
+    @content;
+  }
+}
+
+@mixin average-desktop {
+  @media only screen and (min-width: 96em) and (max-width: 119em) {
+    @content;
+  }
+}
+
+@mixin average-laptop {
+  @media only screen and (min-width: 85.375em) and (max-width: 95em) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: 64em) {
+    @content;
+  }
+}
+
+@mixin large-mobile {
+  @media only screen and (max-width: 48em) {
+    @content;
+  }
+}

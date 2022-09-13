@@ -1,0 +1,11 @@
+.arrow_carrot-up::before {
+  @include responsive(small-mobile) {
+    content: '\34';
+  }
+}
+
+.arrow_carrot-down::before {
+  @include responsive(small-mobile) {
+    content: '\35';
+  }
+}

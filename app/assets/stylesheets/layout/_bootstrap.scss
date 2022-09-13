@@ -1,0 +1,18 @@
+/* REPONSIVE */
+@include responsive(large-desktop) {
+  .container {
+    max-width: 1500px;
+  }
+}
+
+@include responsive(average-desktop) {
+  .container {
+    max-width: 1400px;
+  }
+}
+
+@include responsive(average-laptop) {
+  .container {
+    max-width: 1200px;
+  }
+}

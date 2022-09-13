@@ -1,0 +1,22 @@
+.checkbox {
+  &--square {
+    display: inline-block;
+    width: 2rem;
+    height: 2rem;
+    border: 2px solid $pink-color;
+    cursor: pointer;
+    opacity: 0.5;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__label {
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    color: $grey-light;
+    margin-left: 1rem;
+    margin-bottom: 0;
+  }
+}

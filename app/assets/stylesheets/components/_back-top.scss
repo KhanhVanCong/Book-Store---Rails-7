@@ -1,0 +1,30 @@
+#back-top {
+  width: 4rem;
+  height: 4rem;
+  background-color: $pink-color;
+  border: none;
+  border-radius: 3px;
+  outline: none;
+  position: fixed;
+  z-index: 9999;
+  right: 2rem;
+  bottom: 4rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s;
+
+  &:hover {
+    background-color: #f63c43;
+    bottom: 3rem;
+  }
+
+  i {
+    font-size: 1.8rem;
+    color: #fff;
+  }
+}
+
+.back-top--active {
+  opacity: 1 !important;
+  visibility: visible !important;
+}

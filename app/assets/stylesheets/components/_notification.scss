@@ -1,0 +1,21 @@
+.notification {
+  margin-top: 8rem;
+  margin-bottom: 4rem;
+
+  &__wrap {
+    display: flex;
+    justify-content: space-between;
+    border-top: 3px solid #1e85be;
+    background-color: #f7f6f7;
+    font-size: 1.6rem;
+    color: $grey-text;
+    padding: 1rem 2rem;
+  }
+
+  &__text::before {
+    display: inline-block;
+    content: "\f2d2";
+    font-family: FontAwesome, sans-serif;
+    margin-right: 0.5rem;
+  }
+}

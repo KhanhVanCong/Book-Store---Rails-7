@@ -1,0 +1,29 @@
+.policy {
+  background-color: rgb(251, 245, 234);
+  margin: 5rem 0;
+  padding: 3rem 0;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+  }
+
+  &__thumb {
+    min-width: 4.7rem;
+  }
+
+  &__content {
+    padding-left: 1rem;
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__des {
+    font-size: 1.6rem;
+    color: $grey-text;
+  }
+}

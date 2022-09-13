@@ -1,0 +1,53 @@
+.filter {
+  &__showing {
+    display: flex;
+    cursor: pointer;
+
+    &:hover .paragraph {
+      color: $pink-color;
+    }
+  }
+
+  &__dropdown {
+    margin-left: 2rem;
+    text-transform: capitalize;
+
+    &::after {
+      content: "\f107";
+      font-family: FontAwesome;
+      font-size: 1.1rem;
+      padding-left: 2rem;
+      border: none;
+    }
+  }
+
+  &__menu {
+    min-width: unset;
+    font-size: 1.6rem;
+    padding: 1rem;
+    left: auto !important;
+    right: 0 !important;
+    top: 3rem !important;
+    transform: none !important;
+    box-shadow: 0 0.3rem 0.4rem rgba(0, 0, 0, 0.175);
+  }
+
+  &__item {
+    text-transform: capitalize;
+    color: $grey-light;
+
+    &:hover {
+      background-color: transparent;
+      color: $pink-color;
+    }
+  }
+
+  &--active {
+    color: $pink-color;
+  }
+
+  &__divided {
+    border-right: 1px solid $line-border-color;
+    margin: 0 2rem;
+  }
+}

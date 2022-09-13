@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mb-5">
     <div class="col-lg-4 col-md-6 col-sm-6">
-      <div class="card shadow">
+      <div class="card">
         <div class="card-title text-center border-bottom">
           <h2 class="p-3">Resend confirmation</h2>
         </div>
@@ -14,12 +14,12 @@
               <%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email", value: (@user.pending_reconfirmation? ? @user.unconfirmed_email : @user.email) %>
             </div>
 
-            <div class="d-grid">
-              <%= f.submit "Resend confirmation", class: "btn text-light main-bg" %>
+            <div>
+              <%= f.submit "Resend confirmation", class: "btn common__button common__button--no-shadow w-100" %>
             </div>
             <p class="text-center my-1"> OR </p>
-            <div class="d-grid">
-              <%= link_to "Sign up", sign_up_path, class: "btn text-light main-bg" %><br />
+            <div>
+              <%= link_to "Sign up", sign_up_path, class: "btn common__button common__button--no-shadow w-100" %><br />
             </div>
           <% end %>
         </div>

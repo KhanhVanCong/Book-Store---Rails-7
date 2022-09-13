@@ -1,0 +1,60 @@
+.portfolio {
+  &__list {
+    margin-top: 2rem;
+    overflow: hidden;
+  }
+
+  &__thumb {
+    width: 72rem;
+    transition: all 0.2s ease-in-out;
+  }
+
+  &__icon-box {
+    @include centerBox();
+
+    transform: translate(-50%, -90%);
+    visibility: hidden;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  &__wrap {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 3rem;
+
+    // @include responsive(average-laptop) {
+    //   width: 50%;
+    // }
+
+    &::before {
+      content: "";
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: $dark-gray-color;
+      transform: scale(0.9);
+      opacity: 0;
+      visibility: hidden;
+      z-index: -1;
+      transition: all 0.4s ease-in-out;
+    }
+
+    &:hover .portfolio__thumb {
+      transform: scale(1.2);
+    }
+
+    &:hover .portfolio__icon-box {
+      transform: translate(-50%, -50%);
+      visibility: visible;
+      z-index: 11;
+    }
+
+    &:hover::before {
+      visibility: visible;
+      opacity: 0.5;
+      transform: scale(1);
+      z-index: 10;
+    }
+  }
+}

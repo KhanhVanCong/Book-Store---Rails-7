@@ -1,15 +1,15 @@
 <div class="container">
-	<div class="row justify-content-center mt-5">
+	<div class="row justify-content-center mb-5">
 		<div class="col-lg-4 col-md-6 col-sm-6">
-			<div class="card shadow">
+			<div class="card login">
 				<div class="card-title text-center border-bottom">
 					<h2 class="p-3">Login</h2>
 				</div>
 				<div class="card-body">
 					<%= render 'users/shared/notice_messages' %>
 					<%= form_for(@user, url: login_path) do |f| %>
-						<div class="mb-4">
-							<%= f.label :email, class: "form-label" %><br/>
+						<div class="form-group mb-4">
+							<%= f.label :email %><br/>
 							<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
 						</div>
 
@@ -20,22 +20,24 @@
 
 						<% if devise_mapping.rememberable? %>
 							<div class="row mb-4">
-								<div class="col-6">
-									<%= f.check_box :remember_me, class: "form-check-input" %>
-									<%= f.label :remember_me, class: "form-label" %>
+								<div class="col-5">
+									<div class="form-group form-check">
+										<%= f.check_box :remember_me, class: "form-check-input" %>
+										<%= f.label :remember_me, class: "form-check-label ml-1" %>
+									</div>
 								</div>
-								<div class="col-6">
+								<div class="col-7 text-right">
 									<%= link_to "Forgot your password?", forgot_password_path(@user) %>
 								</div>
 							</div>
 						<% end %>
 
-						<div class="d-grid">
-							<%= f.submit "Log in", class: "btn text-light main-bg" %>
+						<div>
+							<%= f.submit "Log in", class: "btn common__button common__button--no-shadow w-100" %>
 						</div>
 						<p class="text-center my-1"> OR </p>
 						<div class="d-grid">
-							<%= link_to "Sign up", sign_up_path, class: "btn text-light main-bg" %><br />
+							<%= link_to "Sign up", sign_up_path, class: "btn common__button common__button--no-shadow w-100" %><br />
 						</div>
 					<% end %>
 				</div>
@@ -43,3 +45,5 @@
 		</div>
 	</div>
 </div>
+
+

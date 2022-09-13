@@ -1,0 +1,25 @@
+.breadcumb {
+  @include centerBox();
+
+  width: 100%;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    text-transform: capitalize;
+    font-size: 1.8rem;
+    justify-content: center;
+    color: $grey-text;
+  }
+
+  &__item:last-child {
+    color: $pink-color;
+    pointer-events: none;
+  }
+
+  &__item + &__item::before {
+    content: "/";
+    color: $grey-text;
+    margin: 0 1rem;
+  }
+}

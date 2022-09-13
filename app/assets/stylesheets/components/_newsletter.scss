@@ -1,0 +1,42 @@
+.newsletter {
+  &__container {
+    border: 5px solid rgba(245, 245, 245, 0.6);
+    padding: 5rem 0;
+
+    @include responsive(large-mobile) {
+      padding: 5rem 1.5rem;
+    }
+  }
+
+  &__title {
+    font-size: 3rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__desc {
+    font-weight: 500;
+    font-size: 1.6rem;
+    color: $grey-text;
+    margin: 1rem 0 5rem;
+  }
+
+  &__input {
+    background-color: rgb(245, 245, 245);
+    outline: none;
+    border: none;
+    height: 5rem;
+    line-height: 5rem;
+    font-size: 1.3rem;
+    padding: 1rem 2.5rem;
+    width: 100%;
+    position: relative;
+  }
+
+  &__arrow {
+    position: absolute;
+    font-size: 2.4rem;
+    right: 2.5rem;
+    transform: translateY(50%);
+  }
+}

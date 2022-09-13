@@ -1,0 +1,30 @@
+html {
+  font-size: 62.5%;
+
+  @include responsive(large-mobile) {
+    font-size: 60%;
+  }
+}
+
+a {
+  color: inherit;
+
+  &:hover {
+    text-decoration: none;
+    color: $pink-color;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+img {
+  max-width: 100%;
+}

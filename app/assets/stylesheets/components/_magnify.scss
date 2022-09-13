@@ -1,0 +1,8 @@
+.magnify {
+  overflow: hidden;
+
+  & > .magnify-lens {
+    border: 1px solid $pink-color;
+    box-shadow: unset;
+  }
+}

@@ -1,0 +1,36 @@
+.rate-desc {
+  margin-top: 5rem;
+
+  &__title {
+    font-size: 2.4rem;
+    border-bottom: 1px solid rgb(251, 197, 199);
+    padding-bottom: 1rem;
+    text-align: center;
+    margin-bottom: 5rem;
+
+    &--active {
+      color: $pink-color;
+    }
+
+    span:hover {
+      cursor: pointer;
+      color: $pink-color;
+    }
+  }
+
+  &__des {
+    display: inline-block;
+    margin-right: 2rem;
+  }
+
+  &--show {
+    display: block !important;
+  }
+}
+
+.desc__detail {
+  display: none;
+  font-size: 1.6rem;
+  color: $grey-text;
+  line-height: 2;
+}

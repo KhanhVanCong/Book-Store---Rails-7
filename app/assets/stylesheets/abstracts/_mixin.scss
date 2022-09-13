@@ -1,0 +1,57 @@
+@mixin circle-box ($size, $time) {
+  content: "";
+  position: absolute;
+  top: $size;
+  left: $size;
+  right: $size;
+  bottom: $size;
+  border: 3px solid transparent;
+  border-top-color: rgba(248, 109, 114, 0.75);
+  border-radius: 50%;
+  animation: cricle-round linear $time infinite;
+}
+
+@mixin centerBox () {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == small-mobile {
+    @media only screen and (max-width: 33.75em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == large-mobile {
+    @media only screen and (max-width: 47.9875em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == tablet {
+    @media only screen and (max-width: 61.9875em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == average-laptop {
+    @media only screen and (max-width: 95em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == average-desktop {
+    @media only screen and (min-width: 96em) and (max-width: 119em) {
+      @content;
+    }
+  }
+
+  @if $breakpoint == large-desktop {
+    @media only screen and (min-width: 120em) {
+      @content;
+    }
+  }
+}

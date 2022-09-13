@@ -1,0 +1,36 @@
+.tag {
+  &__cloud {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__link {
+    padding: 0.5rem 2rem;
+    margin: 0 0.5rem 1rem 0;
+    border: 2px solid $line-border-color;
+    position: relative;
+    transition: all 0.2s ease-in-out;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 0;
+      background-color: $pink-color;
+      z-index: -1;
+      transition: all 0.2s ease-in-out;
+    }
+
+    &:hover {
+      color: #fff;
+      border-color: $pink-color;
+    }
+
+    &:hover::before {
+      height: 100%;
+    }
+  }
+}

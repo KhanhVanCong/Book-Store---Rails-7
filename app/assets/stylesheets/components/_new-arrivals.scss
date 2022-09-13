@@ -1,0 +1,13 @@
+.new-arrivals {
+  &__container {
+    padding: 0 1.5rem;
+
+    @include responsive(large-mobile) {
+      padding: 0 1rem;
+    }
+  }
+
+  &__wrapper {
+    margin-bottom: 5rem;
+  }
+}

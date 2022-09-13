@@ -1,0 +1,64 @@
+/* BLOG */
+.blog {
+  padding: 5rem 0;
+
+  &__thumb {
+    overflow: hidden;
+  }
+
+  &__anchor img {
+    transition: 1s ease;
+  }
+
+  &__wrapper:hover {
+    img {
+      transform: scale(1.2);
+    }
+  }
+
+  &__content {
+    font-family: $merri;
+  }
+
+  &__date,
+  &__category {
+    display: inline-block;
+    font-size: 1.2rem;
+    color: $pink-color;
+    padding: 2rem 0;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__category {
+    &:hover {
+      color: $black-color;
+    }
+  }
+
+  &__date {
+    &::after {
+      content: "/";
+      display: inline-block;
+      padding-left: 0.2rem;
+      color: $grey-light;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  &__description {
+    font-size: 1.4rem;
+    color: $grey-text;
+    line-height: 2;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

@@ -1,7 +1,7 @@
 <div class="container">
-  <div class="row justify-content-center mt-5">
+  <div class="row justify-content-center mb-5">
     <div class="col-lg-4 col-md-6 col-sm-6">
-      <div class="card shadow">
+      <div class="card">
         <div class="card-title text-center border-bottom">
           <h2 class="p-3">Forgot your password?</h2>
         </div>
@@ -15,11 +15,11 @@
             </div>
 
             <div class="d-grid">
-              <%= f.submit "Reset password", class: "btn text-light main-bg" %>
+              <%= f.submit "Reset password", class: "btn common__button common__button--no-shadow w-100" %>
             </div>
             <p class="text-center my-1"> OR </p>
             <div class="d-grid">
-              <%= link_to "Login", login_path(), class: "btn text-light main-bg" %><br />
+              <%= link_to "Login", login_path(), class: "btn common__button common__button--no-shadow w-100" %><br />
             </div>
           <% end %>
         </div>

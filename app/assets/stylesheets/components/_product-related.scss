@@ -1,0 +1,22 @@
+.related {
+  padding: 10rem 0;
+
+  &__container {
+    padding: 0 1.5rem;
+  }
+
+  &__carousel {
+    margin-top: 5rem;
+  }
+
+  &__top-bar {
+    display: flex;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid $line-border-color;
+    margin-bottom: 5rem;
+
+    @include responsive(large-mobile) {
+      justify-content: flex-end;
+    }
+  }
+}

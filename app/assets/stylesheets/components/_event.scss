@@ -1,0 +1,43 @@
+.events {
+  background: url(../images/banner1-1.jpg);
+  background-attachment: fixed;
+  background-size: cover;
+  padding: 15rem 0;
+  font-family: $merri;
+  text-align: center;
+  color: #fff;
+  position: relative;
+  margin-top: 5rem;
+
+  &::before {
+    content: "";
+    background: rgba(43, 43, 43, 0.2);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__container {
+    width: 40%;
+    margin: 0 auto;
+    position: relative;
+
+    @include responsive(large-mobile) {
+      width: 80%;
+    }
+  }
+
+  &__title {
+    font-size: 2.3rem;
+    text-transform: uppercase;
+    font-weight: 300;
+  }
+
+  &__detail {
+    font-size: 4rem;
+    font-weight: 700;
+    padding: 5rem 0;
+  }
+}

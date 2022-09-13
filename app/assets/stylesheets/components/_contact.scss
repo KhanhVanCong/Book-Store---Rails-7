@@ -1,0 +1,19 @@
+.contact {
+  &__item {
+    padding-bottom: 2rem;
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $line-border-color;
+      margin-bottom: 4rem;
+    }
+  }
+
+  &__map {
+    width: 90%;
+    height: 54rem;
+
+    @include responsive(large-mobile) {
+      width: 100%;
+    }
+  }
+}

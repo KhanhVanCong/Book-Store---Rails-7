@@ -1,0 +1,91 @@
+.best-author {
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  background: url(../images/background1.png) center no-repeat;
+
+  &__awards {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    font-size: 2rem;
+    font-weight: 400;
+  }
+
+  &__titles {
+    height: fit-content;
+    margin: 0 1rem 1rem;
+  }
+
+  &__content {
+    @include responsive(large-mobile) {
+      text-align: center;
+    }
+  }
+
+  &__explore {
+    margin-top: 5rem;
+    text-align: right;
+
+    @include responsive(large-mobile) {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+  }
+
+  &__avatar {
+    display: inline-block;
+    width: fit-content;
+    overflow: hidden;
+
+    img {
+      transition: all linear 0.8s;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+  }
+
+  &__detail {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-size: 1.8rem;
+    color: $grey-text;
+  }
+
+  &__name {
+    color: black;
+    padding: 2rem 0;
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
+
+  &__link {
+    font-size: 1.4rem;
+    padding-right: 3rem;
+
+    @include responsive(average-laptop) {
+      padding-right: 2rem;
+    }
+
+    &--circle {
+      display: inline-block;
+      font-size: 1.4rem;
+      width: 3rem;
+      color: $grey-light;
+      height: 3rem;
+      border: 1px solid $line-border-color;
+      border-radius: 50%;
+      position: relative;
+      margin-right: 2rem;
+
+      &:hover {
+        color: $light-gray-color;
+        background-color: $pink-color;
+        border-color: $pink-color;
+      }
+    }
+  }
+}
