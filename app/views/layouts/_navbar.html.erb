@@ -59,9 +59,9 @@
 							</a>
 						</li>
 						<li class="header__icon-item header__icon-item--border">
-							<%= link_to login_path do %>
+							<%= link_to users_info_path(current_user) do %>
 								<i class="fa fa-user-o" aria-hidden="true"></i>
-								<%= current_user.full_name %>
+								<%= current_user.reload.first_name.capitalize %>
 							<% end %>
 						</li>
 						<li class="header__icon-item">
