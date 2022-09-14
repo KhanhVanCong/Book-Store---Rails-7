@@ -6,8 +6,9 @@
 					<h2 class="p-3">Login</h2>
 				</div>
 				<div class="card-body">
-					<%= render 'users/shared/notice_messages' %>
-					<%= form_for(@user, url: login_path) do |f| %>
+					<%= form_for(@user, url: login_path, data: { turbo: false }) do |f| %>
+						<%= render 'users/shared/error_messages' %>
+
 						<div class="form-group mb-4">
 							<%= f.label :email %><br/>
 							<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
@@ -27,7 +28,7 @@
 									</div>
 								</div>
 								<div class="col-7 text-right">
-									<%= link_to "Forgot your password?", forgot_password_path(@user) %>
+									<%= link_to "Forgot your password?", forgot_password_path(@user), data: { turbo: true } %>
 								</div>
 							</div>
 						<% end %>
@@ -35,11 +36,11 @@
 						<div>
 							<%= f.submit "Log in", class: "btn common__button common__button--no-shadow w-100" %>
 						</div>
-						<p class="text-center my-1"> OR </p>
-						<div class="d-grid">
-							<%= link_to "Sign up", sign_up_path, class: "btn common__button common__button--no-shadow w-100" %><br />
-						</div>
 					<% end %>
+					<p class="text-center my-1"> OR </p>
+					<div class="d-grid">
+						<%= link_to "Sign up", sign_up_path, class: "btn common__button common__button--no-shadow w-100" %><br/>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -82,7 +82,10 @@
 						instagram
 					</h4>
 					<div class="footer__instagram">
-						<div class="instagram__carousel" id="js-instagram__carousel">
+						<%= content_tag :div,
+													 class: "instagram__carousel",
+													 id: "js-instagram__carousel",
+													 data: { controller: "footer" } do %>
 							<div class="instagram__wrap">
 								<div class="instagram__container">
 									<a href="#" class="instagram__anchor">
@@ -90,6 +93,7 @@
 									</a>
 								</div>
 							</div>
+
 							<div class="instagram__wrap">
 								<div class="instagram__container">
 									<a href="#" class="instagram__anchor">
@@ -97,6 +101,7 @@
 									</a>
 								</div>
 							</div>
+
 							<div class="instagram__wrap">
 								<div class="instagram__container">
 									<a href="#" class="instagram__anchor">
@@ -104,6 +109,7 @@
 									</a>
 								</div>
 							</div>
+
 							<div class="instagram__wrap">
 								<div class="instagram__container">
 									<a href="#" class="instagram__anchor">
@@ -111,6 +117,7 @@
 									</a>
 								</div>
 							</div>
+
 							<div class="instagram__wrap">
 								<div class="instagram__container">
 									<a href="#" class="instagram__anchor">
@@ -118,7 +125,7 @@
 									</a>
 								</div>
 							</div>
-						</div>
+						<% end %>
 					</div>
 					<p class="footer__time-work">7 days a week from 8:00 am to 5 pm</p>
 					<div class="footer__social">

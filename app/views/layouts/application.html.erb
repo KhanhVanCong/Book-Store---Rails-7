@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>BookStores</title>
+    <title>Book Stores</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+		<%= favicon_link_tag 'favicon.ico' %>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -16,10 +18,7 @@
 
   <body>
 		<%= render "layouts/navbar" %>
-<!--		<div class="container-fluid">-->
-<!--			<p class="notice"><%#= notice %></p>-->
-<!--			<p class="alert"><%#= alert %></p>-->
-<!--		</div>-->
+		<%= render "layouts/flash" %>
   	<%= yield %>
 		<%= render "layouts/footer" %>
   </body>

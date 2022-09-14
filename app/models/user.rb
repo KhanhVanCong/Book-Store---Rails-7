@@ -1,13 +1,17 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
-  # :lockable, :timeoutable, :trackable and :omniauthable
+  # :lockable, :timeoutable and :omniauthable
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable, :trackable
 
   validate :password_complexity
   validates :first_name, presence: true
   validates :last_name, presence: true
+
+  def full_name
+    "#{first_name.capitalize} #{last_name.capitalize}"
+  end
 
   private
     def password_complexity

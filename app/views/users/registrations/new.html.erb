@@ -1,59 +1,59 @@
 <div class="container">
-  <div class="row justify-content-center mb-5">
-    <div class="col-lg-4 col-md-6 col-sm-6">
-      <div class="card">
-        <div class="card-title text-center border-bottom">
-          <h2 class="p-3">Sign up</h2>
-        </div>
-        <div class="card-body">
-          <%= form_for(@user, url: sign_up_path(@user)) do |f| %>
-            <%= render "users/shared/error_messages", resource: resource %>
+	<div class="row justify-content-center mb-5">
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card">
+				<div class="card-title text-center border-bottom">
+					<h2 class="p-3">Sign up</h2>
+				</div>
+				<div class="card-body">
+					<%= form_for(@user, url: sign_up_path(@user), data: { turbo: false }) do |f| %>
+						<%= render "users/shared/error_messages", resource: resource %>
 
-            <div class="mb-4">
-              <%= f.label :first_name, class: "form-label" %><br/>
-              <%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>
-            </div>
+						<div class="mb-4">
+							<%= f.label :first_name, class: "form-label" %><br/>
+							<%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>
+						</div>
 
-            <div class="mb-4">
-              <%= f.label :last_name, class: "form-label" %><br/>
-              <%= f.text_field :last_name, class: "form-control text-capitalize" %>
-            </div>
+						<div class="mb-4">
+							<%= f.label :last_name, class: "form-label" %><br/>
+							<%= f.text_field :last_name, class: "form-control text-capitalize" %>
+						</div>
 
-            <div class="mb-4">
-              <%= f.label :email, class: "form-label" %><br/>
-              <%= f.email_field :email, class: "form-control", autocomplete: "email" %>
-            </div>
+						<div class="mb-4">
+							<%= f.label :email, class: "form-label" %><br/>
+							<%= f.email_field :email, class: "form-control", autocomplete: "email" %>
+						</div>
 
-            <div class="mb-4">
-              <%= f.label :password, class: "form-label" %>
-              <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
-              <% end %><br />
-              <%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
-            </div>
+						<div class="mb-4">
+							<%= f.label :password, class: "form-label" %>
+							<% if @minimum_password_length %>
+								<em>(<%= @minimum_password_length %> characters minimum)</em>
+							<% end %><br/>
+							<%= f.password_field :password, class: "form-control", autocomplete: "current-password" %>
+						</div>
 
-            <div class="mb-4">
-              <%= f.label :password_confirmation, class: "form-label" %><br />
-              <%= f.password_field :password_confirmation, class: "form-control", autocomplete: "current-password" %>
-            </div>
+						<div class="mb-4">
+							<%= f.label :password_confirmation, class: "form-label" %><br/>
+							<%= f.password_field :password_confirmation, class: "form-control", autocomplete: "current-password" %>
+						</div>
 
-            <div class="row mb-4">
-              <div class="col-12 text-right">
-                <%= link_to "Resend confirmation?", new_confirmation_path(resource_name) %>
-              </div>
-            </div>
+						<div class="row mb-4">
+							<div class="col-12 text-right">
+								<%= link_to "Resend confirmation?", new_confirmation_path(resource_name), data: { turbo: true } %>
+							</div>
+						</div>
 
-            <div class="d-grid">
-              <%= f.submit "Sign up", class: "btn common__button common__button--no-shadow w-100" %>
-            </div>
-            <p class="text-center my-1"> OR </p>
-            <div class="d-grid">
-              <%= link_to "Login", login_path, class: "btn common__button common__button--no-shadow w-100" %><br />
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+						<div class="d-grid">
+							<%= f.submit "Sign up", class: "btn common__button common__button--no-shadow w-100" %>
+						</div>
+						<p class="text-center my-1"> OR </p>
+						<div class="d-grid">
+							<%= link_to "Login", login_path, class: "btn common__button common__button--no-shadow w-100" %><br/>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 

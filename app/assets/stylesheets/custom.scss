@@ -20,3 +20,37 @@
 .form-check-input {
   margin-top: 0.6rem;
 }
+
+/* Flashes */
+
+.flashes {
+
+}
+
+.flash {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 1.5rem 1rem;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  border-radius: 3px;
+
+  &.notice,
+  &.success {
+    --tw-bg-opacity: 1;
+    background-color: rgb(187 247 208/var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(20 83 45/var(--tw-text-opacity));
+  }
+
+  &.error,
+  &.alert {
+    --tw-bg-opacity: 1;
+    background-color: rgb(252 165 165/var(--tw-bg-opacity));
+    --tw-text-opacity: 1;
+    color: rgb(127 29 29/var(--tw-text-opacity));
+  }
+}

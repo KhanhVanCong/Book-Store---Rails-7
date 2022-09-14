@@ -6,7 +6,7 @@
           <h2 class="p-3">Forgot your password?</h2>
         </div>
         <div class="card-body">
-          <%= form_for(@user, url: password_path(@user), html: { method: :post }) do |f| %>
+          <%= form_for(@user, url: forgot_password_path(@user), html: { method: :post, data: { turbo: false } }) do |f| %>
             <%= render "users/shared/error_messages", resource: resource %>
 
             <div class="mb-4">
@@ -17,11 +17,11 @@
             <div class="d-grid">
               <%= f.submit "Reset password", class: "btn common__button common__button--no-shadow w-100" %>
             </div>
-            <p class="text-center my-1"> OR </p>
-            <div class="d-grid">
-              <%= link_to "Login", login_path(), class: "btn common__button common__button--no-shadow w-100" %><br />
-            </div>
           <% end %>
+          <p class="text-center my-1"> OR </p>
+          <div class="d-grid">
+            <%= link_to "Login", login_path(), class: "btn common__button common__button--no-shadow w-100" %><br />
+          </div>
         </div>
       </div>
     </div>

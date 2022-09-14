@@ -1,4 +1,8 @@
 @import 'bootstrap/scss/bootstrap';
+@import "slick-carousel/slick/slick";
+@import "slick-carousel/slick/slick-theme";
+@import "../fonts/elegant-fonts";
+@import "jquery-modal/jquery.modal";
 
 @import "abstracts/mixin";
 @import "abstracts/variable";
@@ -52,9 +56,8 @@
 @import "pages/shop";
 @import "pages/home";
 
-@import "../fonts/elegant-fonts";
 
-@import "slick-carousel/slick/slick";
-@import "slick-carousel/slick/slick-theme";
+
+
 
 @import "custom";

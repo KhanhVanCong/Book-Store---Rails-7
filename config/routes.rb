@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "sign_up" => "users/registrations#new"
     post "sign_up" => "users/registrations#create"
     get "forgot_password" => "users/passwords#new"
+    post "forgot_password" => "users/passwords#create"
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
