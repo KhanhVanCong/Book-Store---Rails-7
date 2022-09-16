@@ -6,7 +6,7 @@ ActionView::Base.field_error_proc = Proc.new do |html_tag, instance|
   else
     %{<div class="field-with-errors">
         #{html_tag}
-        <span class="error">
+        <span class="error text-danger">
           #{[instance.error_message].flatten.first}
         </span>
       </div>

@@ -1,0 +1,7 @@
+<%= turbo_stream.update "form_show_current_user" do %>
+	<%= render "users/infos/form" %>
+<% end %>
+
+<%= turbo_stream.update "current_user_name", current_user.display_firstname %>
+
+<%= render_flash_stream %>

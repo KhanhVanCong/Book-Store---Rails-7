@@ -5,9 +5,10 @@ class Users::InfosController < ApplicationController
   end
 
   def update
-    user = User.first
-    if user.update(user_params)
-      redirect_to users_info_path, notice: "Account successfully updated!"
+    if current_user.update(user_params)
+      flash.now[:notice] = "Account successfully updated!"
+      # render :show, status: :ok
+      # redirect_to users_info_path, notice: "Account successfully updated!"
     else
       render :show, status: :unprocessable_entity
     end

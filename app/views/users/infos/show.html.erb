@@ -1,33 +1,14 @@
 <div class="container">
-  <div class="row justify-content-center mb-5">
-    <div class="col-lg-4 col-md-6 col-sm-6">
-      <div class="card">
-        <div class="card-title text-center border-bottom">
-          <h2 class="p-3">My Info</h2>
-        </div>
-        <div class="card-body">
-          <%= form_with(model: current_user,
-                        url: users_info_path(current_user),
-                        id: current_user,
-                        html: { method: :put,
-                                data: { turbo: false } }) do |f| %>
-            <%#= render "users/shared/error_messages", resource: resource %>
-            <div class="mb-4">
-              <%= f.label :first_name, class: "form-label" %><br/>
-              <%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>
-            </div>
-
-            <div class="mb-4">
-              <%= f.label :last_name, class: "form-label" %><br/>
-              <%= f.text_field :last_name, class: "form-control text-capitalize" %>
-            </div>
-
-            <div class="d-grid">
-              <%= f.submit "Update", class: "btn common__button common__button--no-shadow w-100" %>
-            </div>
-          <% end %>
-        </div>
-      </div>
-    </div>
-  </div>
+	<div class="row justify-content-center mb-5">
+		<div class="col-lg-4 col-md-6 col-sm-6">
+			<div class="card">
+				<div class="card-title text-center border-bottom">
+					<h2 class="p-3">My Info</h2>
+				</div>
+					<div class="card-body" id="form_show_current_user">
+						<%= render "users/infos/form" %>
+					</div>
+			</div>
+		</div>
+	</div>
 </div>

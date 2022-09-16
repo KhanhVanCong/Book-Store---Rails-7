@@ -61,7 +61,9 @@
 						<li class="header__icon-item header__icon-item--border">
 							<%= link_to users_info_path(current_user) do %>
 								<i class="fa fa-user-o" aria-hidden="true"></i>
-								<%= current_user.reload.first_name.capitalize %>
+								<span id="current_user_name">
+									<%= current_user.display_firstname %>
+								</span>
 							<% end %>
 						</li>
 						<li class="header__icon-item">
