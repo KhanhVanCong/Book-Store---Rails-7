@@ -18,5 +18,6 @@ module BookStores
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.autoload_paths += Dir["#{config.root}/lib/**/"]
   end
 end

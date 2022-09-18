@@ -6,8 +6,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable, :trackable
 
   validate :password_complexity
-  validates :first_name, presence: true
-  validates :last_name, presence: true
+  validates :first_name, presence: { message: ErrorDescriptions::Error_List[:VALUE_CANT_BE_EMPLTY] }
+  validates :last_name, presence: { message: ErrorDescriptions::Error_List[:VALUE_CANT_BE_EMPLTY] }
 
   def display_firstname
     first_name.capitalize

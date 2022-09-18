@@ -4,7 +4,6 @@
 								id: current_user,
 								html: { method: :put,
 												data: { turbo: true } }) do |f| %>
-		<%#= render "users/shared/error_messages", resource: resource %>
 		<div class="mb-4">
 			<%= f.label :first_name, class: "form-label" %><br/>
 			<%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>
@@ -13,6 +12,14 @@
 		<div class="mb-4">
 			<%= f.label :last_name, class: "form-label" %><br/>
 			<%= f.text_field :last_name, class: "form-control text-capitalize" %>
+		</div>
+
+		<div class="row mb-4">
+			<div class="col-5">
+			</div>
+			<div class="col-7 text-right">
+				<%= link_to "Change your password?", change_password_path, data: { turbo_frame: "_top" } %>
+			</div>
 		</div>
 
 		<div class="d-grid">

@@ -7,8 +7,6 @@
 				</div>
 				<div class="card-body">
 					<%= form_for(@user, url: sign_up_path(@user), data: { turbo: false }) do |f| %>
-						<%= render "users/shared/error_messages", resource: resource %>
-
 						<div class="mb-4">
 							<%= f.label :first_name, class: "form-label" %><br/>
 							<%= f.text_field :first_name, class: "form-control text-capitalize", autofocus: true %>

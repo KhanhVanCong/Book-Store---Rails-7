@@ -14,8 +14,22 @@ class Users::InfosController < ApplicationController
     end
   end
 
+  def get_change_password
+  end
+  def change_password
+    if current_user.update_with_password(password_params)
+      redirect_to login_path, notice: "Your Password has been updated!"
+    else
+      render "users/infos/get_change_password"
+    end
+  end
+
   private
     def user_params
       params.require(:user).permit(:first_name, :last_name)
+    end
+
+    def password_params
+      params.require(:user).permit(:password, :password_confirmation, :current_password)
     end
 end

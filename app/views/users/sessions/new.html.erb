@@ -7,8 +7,6 @@
 				</div>
 				<div class="card-body">
 					<%= form_for(@user, url: login_path, data: { turbo: false }) do |f| %>
-						<%= render 'users/shared/error_messages' %>
-
 						<div class="form-group mb-4">
 							<%= f.label :email %><br/>
 							<%= f.email_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
