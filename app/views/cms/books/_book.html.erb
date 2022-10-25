@@ -1,0 +1,18 @@
+<div id="<%= dom_id book %>">
+	<ul>
+		<li>
+			<%= book.title %>
+		</li>
+		<li>
+			<%= book.description %>
+		</li>
+		<li>
+			<%= book.price %>
+		</li>
+		<li>
+			<% book.images.each do |image| %>
+				<%= image_tag image.variant(:on_sale), alt: "No Image" %>
+			<% end %>
+		</li>
+	</ul>
+</div>

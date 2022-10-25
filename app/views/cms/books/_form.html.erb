@@ -1,0 +1,50 @@
+<%= form_with(model: [:cms, book]) do |form| %>
+	<% if book.errors.any? %>
+		<div style="color: red">
+			<h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+			<ul>
+				<% book.errors.each do |error| %>
+					<li><%= error.full_message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+
+	<div>
+		<%= form.label :title %>
+		<%= form.text_field :title %>
+	</div>
+
+	<div>
+		<%= form.label :description %>
+		<%= form.text_field :description %>
+	</div>
+
+	<div>
+		<%= form.label :price %>
+		<%= form.number_field :price %>
+	</div>
+
+	<% if book.images.attached? %>
+		<% book.images.each do |image| %>
+			<div>
+				<% if image.id.present? %>
+					<%= image_tag image.variant(:on_sale), alt: "No Image" %>
+					<%= link_to "Delete attachment",
+											purge_image_cms_book_path(book, image),
+											data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+				<% end %>
+			</div>
+		<% end %>
+	<% end %>
+
+	<div>
+		<%= form.file_field :images, multiple: true, direct_upload: true %>
+	</div>
+
+	<div>
+		<%= form.submit %>
+	</div>
+<% end %>
+

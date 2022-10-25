@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Books</h1>
+
+<div id="cms_books">
+  <% @books.with_attached_images.each do |book| %>
+    <%= render book %>
+    <p>
+      <%= link_to "Show this book", cms_book_path(book) %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New book", new_cms_book_path %>
