@@ -10,7 +10,12 @@
 	<%= stylesheet_link_tag "cms", "data-turbo-track": "reload" %>
 	<%= javascript_include_tag "cms", "data-turbo-track": "reload", defer: true %>
 </head>
-	<body>
-		<%= yield %>
-	</body>
+<body>
+	<%= render "cms/layout/sidenav" %>
+	<div id="ai-body" class="h-100">
+		<div class="container-fluid" id="body">
+			<%= yield %>
+		</div>
+	</div>
+</body>
 </html>

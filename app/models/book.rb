@@ -10,6 +10,7 @@ class Book < ApplicationRecord
     attachable.variant :on_sale, resize_to_limit: [160, 232]
     attachable.variant :featured, resize_to_limit: [263, 380]
     attachable.variant :new_arrival, resize_to_limit: [213, 308]
+    attachable.variant :thumbnail, resize_to_limit: [103, 150]
   end
 
   validates :description, :price, presence: true

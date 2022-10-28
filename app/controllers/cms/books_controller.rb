@@ -5,11 +5,7 @@ module Cms
 
     # GET /cms/books
     def index
-      @books = Book.all
-    end
-
-    # GET /cms/books/1
-    def show
+      @pagy, @books = pagy(Book.all)
     end
 
     # GET /cms/books/new

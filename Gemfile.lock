@@ -152,6 +152,8 @@ GEM
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
+    pagy (5.10.1)
+      activesupport
     pg (1.4.3)
     puma (5.6.5)
       nio4r (~> 2.0)
@@ -259,6 +261,7 @@ DEPENDENCIES
   foreman
   image_processing (~> 1.2)
   jsbundling-rails
+  pagy (~> 5.10)
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.3, >= 7.0.3.1)

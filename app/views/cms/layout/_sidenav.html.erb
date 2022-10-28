@@ -1,0 +1,25 @@
+<%= content_tag :div,
+								id: "ai-container",
+								data: { controller: "sidenav" } do %>
+	<div id="ai-menu-list">
+		<button id="ai-menu-list-btn" class="btn btn-light">&#9776;</button>
+		<a class="ac-menu-list-item">
+			<span>
+				<i class="fa-solid fa-user"></i>
+			</span>
+			<p>Authors </p>
+		</a>
+		<%= link_to cms_root_path, class: "ac-menu-list-item #{sidenav_active(name: "books")}" do %>
+				<span>
+					<i class="fa-solid fa-book"></i>
+				</span>
+			<p>Books</p>
+		<% end %>
+		<a class="ac-menu-list-item">
+			<span>
+				<i class="fa-solid fa-cart-shopping"></i>
+			</span>
+			<p>Categories</p>
+		</a>
+	</div>
+<% end %>

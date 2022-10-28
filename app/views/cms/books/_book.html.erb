@@ -1,18 +1,16 @@
-<div id="<%= dom_id book %>">
-	<ul>
-		<li>
-			<%= book.title %>
-		</li>
-		<li>
-			<%= book.description %>
-		</li>
-		<li>
-			<%= book.price %>
-		</li>
-		<li>
-			<% book.images.each do |image| %>
-				<%= image_tag image.variant(:on_sale), alt: "No Image" %>
-			<% end %>
-		</li>
-	</ul>
-</div>
+<tr>
+	<td><%= (index + 1) %></td>
+	<td><%= image_tag book.images.first.variant(:thumbnail), alt: "No Image" %></td>
+	<td><%= book.title %></td>
+	<td><%= book.description %></td>
+	<td><%= book.price %></td>
+	<td>
+		<%= link_to edit_cms_book_path(book), class: "mr-1" do %>
+			<i class="fa-regular fa-pen-to-square"></i>
+		<% end %>
+		<%= link_to cms_book_path(book),
+								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+			<i class="fa-solid fa-trash-can"></i>
+		<% end %>
+	</td>
+</tr>
