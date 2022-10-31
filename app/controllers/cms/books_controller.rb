@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 module Cms
   class BooksController < CmsController
-    before_action :find_book, only: %i[ show edit update destroy pure_image ]
+    before_action :find_book, only: %i[ edit update destroy pure_image ]
 
     # GET /cms/books
     def index
@@ -22,7 +22,7 @@ module Cms
       @book = Book.new(book_params)
       set_images
       if @book.save
-        redirect_to cms_book_path(@book), notice: "Book was successfully created."
+        redirect_to cms_books_path, notice: "Book was successfully created."
       else
         render :new, status: :unprocessable_entity
       end
@@ -32,7 +32,7 @@ module Cms
     def update
       set_images
       if @book.update(book_params)
-        redirect_to cms_book_path(@book), notice: "Book was successfully updated."
+        redirect_to cms_books_path, notice: "Book was successfully updated."
       else
         render :edit, status: :unprocessable_entity
       end
@@ -64,7 +64,7 @@ module Cms
 
       # Only allow a list of trusted parameters through.
       def book_params
-        params.require(:book).permit(:title, :description, :price)
+        params.require(:book).permit(:title, :description, :price, author_ids: [])
       end
 
       def set_images

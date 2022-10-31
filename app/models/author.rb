@@ -1,8 +1,21 @@
 class Author < ApplicationRecord
-  has_many :book_authors, foreign_key: "author_id", dependent: :destroy
+  has_many :book_authors, inverse_of: :author, dependent: :destroy
   has_many :books, through: :book_authors
-  has_one_attached :avatar
+  has_one_attached :avatar do |attachable|
+    attachable.variant :small, resize_to_limit: [168, 197]
+    attachable.variant :medium, resize_to_limit: [270, 335]
+    attachable.variant :big, resize_to_limit: [370, 430]
+  end
 
-  validates :description, :avatar, presence: true
+  validates :description, presence: true
   validates :first_name, :last_name, presence: true, length: { maximum: 100 }
+  validates :avatar,
+            attached: true,
+            content_type: [:png, :jpg, :jpeg],
+            size: { less_than: 3.megabytes, message: 'is too large' },
+            dimension: { width: 370, height: 460 }
+
+  def display_name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -16,6 +16,14 @@
 			<%= form.text_area :description, class: "form-control" %>
 		</div>
 
+		<div class="form-group col-md-4">
+			<%= form.label :authors %>
+			<%= form.select :author_ids,
+											options_from_collection_for_select(Author.all, "id", "display_name", book.authors.ids),
+											{},
+											{ :multiple => true}%>
+		</div>
+
 		<div class="custom-file">
 			<%= form.file_field :images, class: "custom-file-input", multiple: true, direct_upload: true %>
 			<label class="custom-file-label">Choose file</label>
