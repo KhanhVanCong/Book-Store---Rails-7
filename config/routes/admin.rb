@@ -6,5 +6,7 @@ namespace :cms do
   end
 
   resources :authors, except: :show
+  resources :tags, except: :show
+
   delete "attachments/:id/purge" => "attachments#purge", as: "purge_attachment"
 end

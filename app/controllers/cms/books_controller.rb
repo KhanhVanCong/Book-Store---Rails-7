@@ -64,7 +64,7 @@ module Cms
 
       # Only allow a list of trusted parameters through.
       def book_params
-        params.require(:book).permit(:title, :description, :price, author_ids: [])
+        params.require(:book).permit(:title, :description, :price, author_ids: [], tag_ids: [])
       end
 
       def set_images

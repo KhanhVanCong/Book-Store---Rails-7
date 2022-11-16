@@ -7,6 +7,8 @@ module Cms::CmsHelper
       NAME_OF_CLASS_ACTIVE if controller == "cms-books"
     when "authors"
       NAME_OF_CLASS_ACTIVE if controller == "cms-authors"
+    when "tags"
+      NAME_OF_CLASS_ACTIVE if controller == "cms-tags"
     end
   end
 end

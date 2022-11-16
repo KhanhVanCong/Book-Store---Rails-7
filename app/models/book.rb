@@ -3,7 +3,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :book_authors
   has_many :book_categories, dependent: :destroy
   has_many :categories, through: :book_categories
-  has_many :book_tags, dependent: :destroy
+  has_many :book_tags, inverse_of: :book, dependent: :destroy
   has_many :tags, through: :book_tags
   has_many_attached :images do |attachable|
     attachable.variant :slider, resize_to_limit: [278, 401]
@@ -13,7 +13,7 @@ class Book < ApplicationRecord
     attachable.variant :thumbnail, resize_to_limit: [103, 150]
   end
 
-  validates :description, :author_ids, :price, presence: true
+  validates :description, :price, :author_ids, :tag_ids, presence: true
   validates :title, presence: true, length: { maximum: 100 }
   validates :price, numericality: { greater_than_or_equal_to: 0 }
   validates :images,
