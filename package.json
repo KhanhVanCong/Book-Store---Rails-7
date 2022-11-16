@@ -13,6 +13,7 @@
     "jquery-modal": "0.9.1",
     "popper.js": "1.14.7",
     "sass": "^1.54.8",
+    "select2": "^4.1.0-rc.0",
     "slick-carousel": "^1.8.1"
   },
   "scripts": {

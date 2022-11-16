@@ -16,12 +16,12 @@
 			<%= form.text_area :description, class: "form-control" %>
 		</div>
 
-		<div class="form-group col-md-4">
+		<div class="form-group" data-controller="select2">
 			<%= form.label :authors %>
 			<%= form.select :author_ids,
 											options_from_collection_for_select(Author.all, "id", "display_name", book.authors.ids),
 											{},
-											{ :multiple => true}%>
+											{ multiple: true, class: "js-select2" }%>
 		</div>
 
 		<div class="custom-file">

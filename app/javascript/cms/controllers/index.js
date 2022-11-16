@@ -5,4 +5,6 @@
 import { application } from "./application"
 
 import SidenavController from "./sidenav_controller"
+import Select2Controller from "./select2_controller"
 application.register("sidenav", SidenavController)
+application.register("select2", Select2Controller)
