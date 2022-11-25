@@ -1,13 +1,10 @@
 class Tag < ApplicationRecord
-  before_destroy :is_zero_book?
+  include Books
 
-  has_many :book_tags
+  before_destroy :book_count_equal_zero?
+
+  has_many :book_tags, dependent: :restrict_with_exception
   has_many :books, through: :book_tags
 
-  validates :name, presence: true, length: { maximum: 50 }
-
-  private
-    def is_zero_book?
-      self.books_count > 0 ? false : true
-    end
+  validates :name, presence: true, uniqueness: { case_sensitive: false }, length: { maximum: 50 }
 end

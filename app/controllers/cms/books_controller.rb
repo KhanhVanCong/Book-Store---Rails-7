@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 module Cms
   class BooksController < CmsController
     before_action :find_book, only: %i[ edit update destroy pure_image ]
@@ -64,7 +65,7 @@ module Cms
 
       # Only allow a list of trusted parameters through.
       def book_params
-        params.require(:book).permit(:title, :description, :price, author_ids: [], tag_ids: [])
+        params.require(:book).permit(:title, :description, :price, author_ids: [], tag_ids: [], category_ids: [])
       end
 
       def set_images

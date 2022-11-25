@@ -40,6 +40,8 @@ module Cms
     def destroy
       @author.destroy
       redirect_to cms_authors_url, notice: "author was successfully destroyed."
+    rescue => e
+      redirect_to cms_authors_url, notice: e.message
     end
 
     private

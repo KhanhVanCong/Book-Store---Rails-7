@@ -1,5 +1,9 @@
 class Author < ApplicationRecord
-  has_many :book_authors, inverse_of: :author, dependent: :destroy
+  include Books
+
+  before_destroy :book_count_equal_zero?
+
+  has_many :book_authors, inverse_of: :author, dependent: :restrict_with_exception
   has_many :books, through: :book_authors
   has_one_attached :avatar do |attachable|
     attachable.variant :small, resize_to_limit: [168, 197]

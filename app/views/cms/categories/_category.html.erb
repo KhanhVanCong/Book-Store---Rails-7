@@ -1,0 +1,14 @@
+<tr>
+	<td><%= (index + 1) %></td>
+	<td><%= category.name %></td>
+	<td><%= category.books_count %></td>
+	<td>
+		<%= link_to edit_cms_category_path(category), class: "mr-1" do %>
+			<i class="fa-regular fa-pen-to-square"></i>
+		<% end %>
+		<%= link_to cms_category_path(category),
+								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+			<i class="fa-solid fa-trash-can"></i>
+		<% end %>
+	</td>
+</tr>

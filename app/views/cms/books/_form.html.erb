@@ -25,6 +25,14 @@
 		</div>
 
 		<div class="form-group" data-controller="select2">
+			<%= form.label :categories %>
+			<%= form.select :category_ids,
+											options_from_collection_for_select(Category.all, "id", "name", book.categories.ids),
+											{},
+											{ multiple: true, class: "js-select2" }%>
+		</div>
+
+		<div class="form-group" data-controller="select2">
 			<%= form.label :tags %>
 			<%= form.select :tag_ids,
 											options_from_collection_for_select(Tag.all, "id", "name", book.tags.ids),
