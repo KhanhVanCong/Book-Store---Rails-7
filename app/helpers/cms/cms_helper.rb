@@ -11,6 +11,8 @@ module Cms::CmsHelper
       NAME_OF_CLASS_ACTIVE if controller == "cms-tags"
     when "categories"
       NAME_OF_CLASS_ACTIVE if controller == "cms-categories"
+    when "admins"
+      NAME_OF_CLASS_ACTIVE if controller == "cms-admins"
     end
   end
 end

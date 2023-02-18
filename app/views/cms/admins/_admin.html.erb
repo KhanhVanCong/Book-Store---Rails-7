@@ -1,0 +1,18 @@
+<tr>
+	<td><%= (index + 1) %></td>
+	<td><%= admin.name %></td>
+	<td><%= admin.email %></td>
+	<td><%= admin.role %></td>
+	<td><%= admin.status %></td>
+	<td>
+		<%= link_to edit_cms_admin_path(admin), class: "mr-1" do %>
+			<i class="fa-regular fa-pen-to-square"></i>
+		<% end %>
+		<% if admin.is_not_current_admin?(current_cms_admin) %>
+			<%= link_to cms_admin_path(admin),
+									data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+				<i class="fa-solid fa-trash-can"></i>
+			<% end %>
+		<% end %>
+	</td>
+</tr>

@@ -1,4 +1,3 @@
-require 'csv'
 class HomeController < ApplicationController
   def index
   end

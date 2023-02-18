@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  root "home#index"
-
   devise_for :users, module: "users", skip: [:session, :registration]
   as :user do
     get "login" => "users/sessions#new", as: :new_user_session
@@ -18,4 +16,6 @@ Rails.application.routes.draw do
   put "change_password" => "users/infos#change_password"
 
   draw(:admin)
+
+  root "home#index"
 end
