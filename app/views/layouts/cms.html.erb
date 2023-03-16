@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CMS - Book Stores</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<%= favicon_link_tag 'favicon.ico' %>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+
+	<%= stylesheet_link_tag "cms", "data-turbo-track": "reload" %>
+	<%= javascript_include_tag "cms", "data-turbo-track": "reload", defer: true %>
+</head>
+<body>
+	<% if current_cms_admin %>
+		<%= render "cms/layout/sidenav" %>
+		<div id="ai-body" class="h-100">
+			<div class="container-fluid" id="body">
+				<%= yield %>
+			</div>
+		</div>
+	<% else %>
+		<%= yield %>
+	<% end %>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<div class="w-50 mx-auto border border-light bg-light p-3 rounded">
+  <%= form_with(model: [:cms, tag]) do |form| %>
+    <div class="form-row">
+      <div class="form-group col-md-12">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="text-center mt-3">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>
+
+

@@ -1,0 +1,40 @@
+<%= content_tag :div,
+								id: "ai-container",
+								data: { controller: "sidenav" } do %>
+	<div id="ai-menu-list">
+		<button id="ai-menu-list-btn" class="btn btn-light">&#9776;</button>
+		<p class="font-weight-bold text-muted text-center my-2">
+			Hi, <%= current_cms_admin.name.titleize %>
+			<%= link_to cms_logout_path,
+									class: "ml-3",
+									"data-toggle": "tooltip",
+									"data-placement": "top",
+									title: "Log out" do %>
+				<span><i class="fa-solid fa-right-from-bracket text-dark" aria-hidden="true"></i></span>
+			<% end %>
+		</p>
+		<%= link_to cms_authors_path, class: "ac-menu-list-item #{sidenav_active(name: "authors")}" do %>
+			<span><i class="fa-solid fa-user"></i></span>
+			<p>Authors</p>
+		<% end %>
+		<%= link_to cms_root_path, class: "ac-menu-list-item #{sidenav_active(name: "books")}" do %>
+			<span><i class="fa-solid fa-book"></i></span>
+			<p>Books</p>
+		<% end %>
+		<%= link_to cms_categories_path, class: "ac-menu-list-item #{sidenav_active(name: "categories")}" do %>
+			<span><i class="fa-solid fa-cart-shopping"></i></span>
+			<p>Categories</p>
+		<% end %>
+		<%= link_to cms_tags_path, class: "ac-menu-list-item #{sidenav_active(name: "tags")}" do %>
+			<span><i class="fa fa-tags" aria-hidden="true"></i></span>
+			<p>Tags</p>
+		<% end %>
+
+		<% if current_cms_admin.super_admin? %>
+			<%= link_to cms_admins_path, class: "ac-menu-list-item #{sidenav_active(name: "admins")}" do %>
+				<span><i class="fa-solid fa-user-secret" aria-hidden="true"></i></span>
+				<p>Admins</p>
+			<% end %>
+		<% end %>
+	</div>
+<% end %>

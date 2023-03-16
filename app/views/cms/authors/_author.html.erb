@@ -1,0 +1,33 @@
+<tr>
+	<td><%= (index + 1) %></td>
+	<td><%= image_tag author.avatar.variant(:small), alt: "No Image" %></td>
+	<td><%= author.display_name %></td>
+	<td><%= author.description %></td>
+	<td>
+		<% if author.facebook_link.present? %>
+			<%= link_to "Facebook", author.facebook_link %>
+		<% end %>
+		<% if author.instagram_link.present? %>
+			<br/>
+			<%= link_to "Instagram", author.instagram_link %>
+		<% end %>
+		<% if author.twitter_link.present? %>
+			<br/>
+			<%= link_to "Twitter", author.twitter_link %>
+		<% end %>
+		<% if author.google_plus_link.present? %>
+			<br/>
+			<%= link_to "Google Plus", author.google_plus_link %>
+		<% end %>
+	</td>
+	<td><%= author.books_count %></td>
+	<td>
+		<%= link_to edit_cms_author_path(author), class: "mr-1" do %>
+			<i class="fa-regular fa-pen-to-square"></i>
+		<% end %>
+		<%= link_to cms_author_path(author),
+								data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } do %>
+			<i class="fa-solid fa-trash-can"></i>
+		<% end %>
+	</td>
+</tr>
