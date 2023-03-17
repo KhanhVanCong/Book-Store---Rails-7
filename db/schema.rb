@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_18_020501) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -111,11 +111,28 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_020501) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name", null: false
     t.integer "books_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_orders_on_book_id"
+    t.index ["cart_id", "book_id"], name: "index_orders_on_cart_id_and_book_id", unique: true
+    t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -157,4 +174,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_18_020501) do
   add_foreign_key "book_categories", "categories"
   add_foreign_key "book_tags", "books"
   add_foreign_key "book_tags", "tags"
+  add_foreign_key "carts", "users"
+  add_foreign_key "orders", "books"
+  add_foreign_key "orders", "carts"
 end

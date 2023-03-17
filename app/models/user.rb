@@ -9,12 +9,19 @@ class User < ApplicationRecord
   validates :first_name, presence: { message: ErrorDescriptions::Error_List[:VALUE_CANT_BE_EMPLTY] }
   validates :last_name, presence: { message: ErrorDescriptions::Error_List[:VALUE_CANT_BE_EMPLTY] }
 
+  has_one :cart, dependent: :destroy
+
+  after_create_commit :create_new_cart
+
   def display_firstname
     first_name.capitalize
   end
 
-  private
+  def create_new_cart
+    self.create_cart
+  end
 
+  private
     def password_complexity
       return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/
 

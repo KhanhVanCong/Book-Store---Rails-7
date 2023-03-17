@@ -5,6 +5,8 @@ class Book < ApplicationRecord
   has_many :categories, through: :book_categories
   has_many :book_tags, inverse_of: :book, dependent: :destroy
   has_many :tags, through: :book_tags
+  has_many :orders, dependent: :destroy
+  has_many :carts, through: :orders
   has_many_attached :images do |attachable|
     attachable.variant :slider, resize_to_limit: [278, 401]
     attachable.variant :on_sale, resize_to_limit: [160, 232]
