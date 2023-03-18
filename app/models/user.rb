@@ -21,6 +21,10 @@ class User < ApplicationRecord
     self.create_cart
   end
 
+  def count_items_in_cart
+    self.cart.orders.count
+  end
+
   private
     def password_complexity
       return if password.blank? || password =~ /(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-])/

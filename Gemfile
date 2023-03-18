@@ -50,7 +50,7 @@ gem "image_processing", "~> 1.2"
 
 gem "creds_env", require: "creds_env/rails"
 
-gem "devise"
+gem "devise", "~> 4.9"
 
 gem "active_storage_validations", "~> 1.0", ">= 1.0.2"
 

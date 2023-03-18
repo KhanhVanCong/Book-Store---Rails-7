@@ -55,7 +55,9 @@
 						<li class="header__icon-item header__icon-item--border header__icon-item--padding-right">
 							<a href="#">
 								<i class="icon_bag_alt" aria-hidden="true"></i>
-								<span class="header__mini-cart">0</span>
+								<span class="header__mini-cart" id="cart_count">
+									<%= current_user.count_items_in_cart %>
+								</span>
 							</a>
 						</li>
 						<li class="header__icon-item header__icon-item--border">
