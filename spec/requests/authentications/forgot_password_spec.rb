@@ -15,14 +15,14 @@ RSpec.describe "Authentications", type: :request do
     context "with exist email" do
       it "is successful" do
         forgot_password(user.email)
-        expect(response).to have_http_status(:found)
+        expect(response).to have_http_status(:see_other)
       end
     end
 
     context "with not exist email" do
       it "fails" do
         forgot_password("not_found@test.com")
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end
