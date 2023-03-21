@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   put "change_password" => "users/infos#change_password"
 
   post "cart" => "carts#add_item"
+  delete "cart" => "carts#remove_item"
 
   draw(:admin)
 

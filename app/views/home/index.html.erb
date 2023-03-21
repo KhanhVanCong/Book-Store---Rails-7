@@ -27,9 +27,15 @@
 									<!--									</div>-->
 									<div class="books__modules">
 										<% if current_user && current_user.cart.exists_book_in_cart?(book.id) %>
-											<a href="#" class="books__cart">
-												<i class="icon_check"></i>
-											</a>
+<!--											<a href="#" class="books__cart">-->
+<!--												<i class="icon_check"></i>-->
+<!--											</a>-->
+											<%= form_with url: cart_path, method: :delete, id: "books__modules_#{book.id}" do %>
+												<%= hidden_field_tag "cart[book_id]", book.id %>
+												<%= button_tag "submit", class: "books__cart" do %>
+													<i class="icon_check"></i>
+												<% end %>
+											<% end %>
 										<% else %>
 											<%= form_with url: cart_path, method: :post, id: "books__modules_#{book.id}" do %>
 												<%= hidden_field_tag "cart[book_id]", book.id %>
