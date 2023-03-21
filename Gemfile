@@ -58,6 +58,8 @@ gem "pagy", "~> 5.10"
 
 gem "enumerize", "~> 2.5"
 
+gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+
 group :development, :test do
   gem "factory_bot_rails"
   gem "rspec-rails", "~> 5.0.1"

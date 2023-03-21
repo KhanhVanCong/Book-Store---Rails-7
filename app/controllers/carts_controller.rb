@@ -4,6 +4,7 @@ class CartsController < ApplicationController
 
   def show
     @books = @cart.books
+    @total_price = @books.sum(&:price)
   end
   def add_item
     @book = Book.find_by!(id: cart_params[:book_id])
