@@ -11,9 +11,9 @@ FactoryBot.define do
         filename: 'book_image.jpg',
         content_type: 'image/jpeg'
       )
-      tag = create_list(:tag, 1)
-      category = create_list(:category, 1)
-      author = create_list(:author, 1)
+      tag = Tag.first.blank? ? create_list(:tag, 1) : Tag.first
+      category = Category.first.blank? ? create_list(:category, 1) : Category.first
+      author = Author.first.blank? ? create_list(:author, 1) : Author.first
       book.tags << tag
       book.categories << category
       book.authors << author

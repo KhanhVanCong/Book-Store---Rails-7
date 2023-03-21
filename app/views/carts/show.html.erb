@@ -1,0 +1,8 @@
+<% if @books.present? %>
+	<%= @books.each do |book| %>
+		<%= book.title %>
+	<% end %>
+	<%= button_to "Empty Cart", empty_cart_path, method: :delete %>
+<% else %>
+	You don't add any books in your cart
+<% end %>

@@ -2,6 +2,9 @@ class CartsController < ApplicationController
   before_action :authenticate_user!
   before_action :current_user_cart
 
+  def show
+    @books = @cart.books
+  end
   def add_item
     @book = Book.find_by!(id: cart_params[:book_id])
     Order.create(cart: @cart, book: @book)
@@ -21,6 +24,13 @@ class CartsController < ApplicationController
       format.turbo_stream { render "carts/add_item" }
       format.html { render body: "" }
     end
+  end
+
+  def empty_cart
+    orders = Order.where(cart_id: @cart.id)
+    orders.destroy_all
+    flash[:notice] = "Empty your cart successfully."
+    redirect_to root_path
   end
 
   private
