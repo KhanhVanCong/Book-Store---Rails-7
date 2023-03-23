@@ -111,6 +111,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "cart_items", force: :cascade do |t|
+    t.bigint "cart_id", null: false
+    t.bigint "book_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_cart_items_on_book_id"
+    t.index ["cart_id", "book_id"], name: "index_cart_items_on_cart_id_and_book_id", unique: true
+    t.index ["cart_id"], name: "index_cart_items_on_cart_id"
+  end
+
   create_table "carts", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -123,16 +133,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
     t.integer "books_count", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "orders", force: :cascade do |t|
-    t.bigint "cart_id", null: false
-    t.bigint "book_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["book_id"], name: "index_orders_on_book_id"
-    t.index ["cart_id", "book_id"], name: "index_orders_on_cart_id_and_book_id", unique: true
-    t.index ["cart_id"], name: "index_orders_on_cart_id"
   end
 
   create_table "tags", force: :cascade do |t|
@@ -174,7 +174,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
   add_foreign_key "book_categories", "categories"
   add_foreign_key "book_tags", "books"
   add_foreign_key "book_tags", "tags"
+  add_foreign_key "cart_items", "books"
+  add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
-  add_foreign_key "orders", "books"
-  add_foreign_key "orders", "carts"
 end

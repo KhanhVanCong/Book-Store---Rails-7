@@ -1,12 +1,12 @@
-class CreateOrders < ActiveRecord::Migration[7.0]
+class CreateCartItems < ActiveRecord::Migration[7.0]
   def change
-    create_table :orders do |t|
+    create_table :cart_items do |t|
       t.references :cart, null: false, foreign_key: true
       t.references :book, null: false, foreign_key: true
 
       t.timestamps
     end
 
-    add_index :orders, [:cart_id, :book_id], unique: true
+    add_index :cart_items, [:cart_id, :book_id], unique: true
   end
 end

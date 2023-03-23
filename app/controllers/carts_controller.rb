@@ -6,9 +6,10 @@ class CartsController < ApplicationController
     @books = @cart.books
     @total_price = @books.sum(&:price)
   end
+
   def add_item
     @book = Book.find_by!(id: cart_params[:book_id])
-    Order.create(cart: @cart, book: @book)
+    CartItem.create(cart: @cart, book: @book)
     flash.now[:notice] = "The book - #{@book.title.capitalize} is added to your cart."
     respond_to do |format|
       format.turbo_stream
@@ -18,8 +19,7 @@ class CartsController < ApplicationController
 
   def remove_item
     @book = Book.find_by!(id: cart_params[:book_id])
-    order = Order.find_by!(cart_id: @cart.id, book_id: @book.id)
-    order.destroy!
+    CartItem.where(cart_id: @cart.id, book_id: @book.id).delete_all
     flash.now[:notice] = "The book - #{@book.title.capitalize} is removed from your cart."
     respond_to do |format|
       format.turbo_stream { render "carts/add_item" }
@@ -28,8 +28,7 @@ class CartsController < ApplicationController
   end
 
   def empty_cart
-    orders = Order.where(cart_id: @cart.id)
-    orders.destroy_all
+    CartItem.where(cart_id: @cart.id).delete_all
     flash[:notice] = "Empty your cart successfully."
     redirect_to root_path
   end

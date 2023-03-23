@@ -1,6 +1,6 @@
 <% if @books.present? %>
-	<%= @books.each do |book| %>
-		<%= book.title %>
+	<%- @books.each do |book| %>
+		<p><%= book.title %></p>
 	<% end %>
 	<p>Total price: <%= @total_price %></p>
 	<%= button_to "Empty Cart", empty_cart_path, method: :delete %>

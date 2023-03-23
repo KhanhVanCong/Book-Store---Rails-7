@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   has_one :cart, dependent: :destroy
 
-  after_create_commit :create_new_cart
+  after_create :create_new_cart
 
   def display_firstname
     first_name.capitalize
@@ -22,7 +22,7 @@ class User < ApplicationRecord
   end
 
   def count_items_in_cart
-    self.cart.orders.count
+    self.cart.cart_items.count
   end
 
   private
