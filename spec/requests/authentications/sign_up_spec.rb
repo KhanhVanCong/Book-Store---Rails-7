@@ -26,31 +26,31 @@ RSpec.describe "Authentications", type: :request do
       it "fails at creating the user with empty first name" do
         expect { create_user("", "van", "khanh@test111.com", "Qwett@7281723", "Qwett@7281723") }
           .not_to change { User.count }
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "fails at creating the user with empty last name" do
         expect { create_user("dfa", "", "khanh@test111.com", "Qwett@7281723", "Qwett@7281723") }
           .not_to change { User.count }
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "fails at creating the user with wrong email" do
         expect { create_user("khanh", "van", "skk", "Qwett@7281723", "Qwett@7281723") }
           .not_to change { User.count }
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "fails at creating the user with password and password confirmation not match" do
         expect { create_user("khanh", "van", "khanh@test.com", "Qwett@", "Qwett@7281723") }
           .not_to change { User.count }
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "fails at creating the user with password too short" do
         expect { create_user("khanh", "van", "khanh@test.com", "Qwett@", "Qwett@") }
           .not_to change { User.count }
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

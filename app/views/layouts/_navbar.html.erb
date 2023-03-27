@@ -53,10 +53,12 @@
 							</a>
 						</li>
 						<li class="header__icon-item header__icon-item--border header__icon-item--padding-right">
-							<a href="#">
+							<%= link_to cart_path do %>
 								<i class="icon_bag_alt" aria-hidden="true"></i>
-								<span class="header__mini-cart">0</span>
-							</a>
+								<span class="header__mini-cart" id="cart_count">
+									<%= current_user.count_items_in_cart %>
+								</span>
+							<% end %>
 						</li>
 						<li class="header__icon-item header__icon-item--border">
 							<%= link_to users_info_path(current_user) do %>

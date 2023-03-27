@@ -1,2 +1,60 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<%= content_tag :main,
+								data: { controller: "home" } do %>
+	<!-- FEATURED -->
+	<section class="featured">
+		<div class="container">
+			<div class="common__title common__title--center">
+				Featured
+			</div>
+			<div class="featured__carousel js-featured__carousel">
+				<% @books.each do |book| %>
+					<div class="featured__container">
+						<div class="featured__wrapper">
+							<div class="featured__books books">
+								<div class="featured__thumb-wrapper books__thumb">
+									<div class="featured__thumb books__thumb--front">
+										<%= link_to "http://google.com", url_target: "blank" do %>
+											<%= image_tag book.images.first.variant(:featured), alt: book.title %>
+										<% end %>
+									</div>
+									<div class="books__modules">
+										<% if @book_ids_in_current_user_cart.include?(book.id) %>
+											<%= form_with url: cart_path, method: :delete, id: "books__modules_#{book.id}" do %>
+												<%= hidden_field_tag "cart[book_id]", book.id %>
+												<%= button_tag "submit", class: "books__cart" do %>
+													<i class="icon_check"></i>
+												<% end %>
+											<% end %>
+										<% else %>
+											<%= form_with url: cart_path, method: :post, id: "books__modules_#{book.id}" do %>
+												<%= hidden_field_tag "cart[book_id]", book.id %>
+												<%= button_tag "submit", class: "books__cart" do %>
+													<i class="icon_cart_alt"></i>
+												<% end %>
+											<% end %>
+										<% end %>
+										<a href="#" class="books__quick-view">
+											<i class='icon_search'></i>
+										</a>
+										<a href="#" class="books__wish-list">
+											<i class="icon_heart_alt"></i>
+										</a>
+									</div>
+								</div>
+								<div class="books__details">
+									<a href="http://google.com" target="_blank" class="books__title">
+										<%= book.title %>
+									</a>
+									<div class="books__author">
+										by <a href="#" class="books__author--hover"><%= book.authors.first.first_name %></a>
+									</div>
+									<div class="books__price">$<%= book.price %></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</section>
+<% end %>

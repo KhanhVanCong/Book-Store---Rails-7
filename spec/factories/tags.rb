@@ -1,6 +1,5 @@
 FactoryBot.define do
   factory :tag do
-    name { "MyString" }
-    books_count { 1 }
+    name { "Tag 1" }
   end
 end

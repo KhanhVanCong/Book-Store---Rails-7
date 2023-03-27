@@ -28,12 +28,12 @@ RSpec.describe "Authentications", type: :request do
       it "is successful at account which is not confirmed" do
         create_user("khanh", "van", "test@blabla.com", "Poeoweo@1231", "Poeoweo@1231")
         resend_confirmation("test@blabla.com")
-        expect(response).to have_http_status(:found)
+        expect(response).to have_http_status(:see_other)
       end
 
       it "fails at account which is confirmed" do
         resend_confirmation(user.email)
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

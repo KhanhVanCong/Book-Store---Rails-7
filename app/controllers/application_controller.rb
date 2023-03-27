@@ -3,7 +3,6 @@ class ApplicationController < ActionController::Base
   # layout :layout_by_resource
 
   protected
-
     def devise_parameter_sanitizer
       if resource_class == User
         User::ParameterSanitizer.new(User, :user, params)

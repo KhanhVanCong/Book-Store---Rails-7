@@ -23,12 +23,12 @@ RSpec.describe "Authentications", type: :request do
     context "with invalid params" do
       it "fails at incorrect email" do
         login("", user.password)
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
 
       it "fails at incorrect password" do
         login(user.email, "")
-        expect(response).to have_http_status(:ok)
+        expect(response).to have_http_status(:unprocessable_entity)
       end
     end
   end

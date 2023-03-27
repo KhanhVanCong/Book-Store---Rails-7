@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   get "change_password" => "users/infos#get_change_password"
   put "change_password" => "users/infos#change_password"
 
+  get "cart" => "carts#show"
+  post "cart" => "carts#add_item"
+  delete "cart" => "carts#remove_item"
+  delete "empty_cart" => "carts#empty_cart"
+
   draw(:admin)
 
   root "home#index"
