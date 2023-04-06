@@ -7,6 +7,8 @@ class Book < ApplicationRecord
   has_many :tags, through: :book_tags
   has_many :cart_items, dependent: :destroy
   has_many :carts, through: :cart_items
+  has_many :order_books
+  has_many :orders, through: :order_books
   has_many_attached :images do |attachable|
     attachable.variant :slider, resize_to_limit: [278, 401]
     attachable.variant :on_sale, resize_to_limit: [160, 232]

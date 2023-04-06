@@ -10,6 +10,8 @@ class User < ApplicationRecord
   validates :last_name, presence: { message: ErrorDescriptions::Error_List[:VALUE_CANT_BE_EMPLTY] }
 
   has_one :cart, dependent: :destroy
+  has_many :locations, dependent: :destroy
+  has_many :orders
 
   after_create :create_new_cart
 

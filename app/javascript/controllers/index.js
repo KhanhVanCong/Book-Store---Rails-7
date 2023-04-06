@@ -4,9 +4,6 @@
 
 import { application } from "./application"
 
-import CartController from "./cart_controller"
-application.register("cart", CartController)
-
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)
 
