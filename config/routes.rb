@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   delete "cart" => "carts#remove_item"
   delete "empty_cart" => "carts#empty_cart"
 
+  get "order/show"
+  post "order/checkout"
+  get "order/complete"
+
+  post "stripe/webhook"
+
   draw(:admin)
 
   root "home#index"

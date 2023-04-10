@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
+ActiveRecord::Schema[7.0].define(version: 2023_04_06_155827) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -135,6 +135,41 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "locations", force: :cascade do |t|
+    t.string "address"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_locations_on_user_id"
+  end
+
+  create_table "order_books", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.bigint "book_id", null: false
+    t.string "book_title"
+    t.decimal "price_per_unit"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_order_books_on_book_id"
+    t.index ["order_id", "book_id"], name: "index_order_books_on_order_id_and_book_id", unique: true
+    t.index ["order_id"], name: "index_order_books_on_order_id"
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.decimal "total_price"
+    t.string "shipping_address"
+    t.string "status"
+    t.string "stripe_payment_intent"
+    t.string "stripe_charge_id"
+    t.string "stripe_refund_id"
+    t.string "stripe_application_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "name", null: false
     t.integer "books_count", default: 0
@@ -177,4 +212,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_155926) do
   add_foreign_key "cart_items", "books"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "carts", "users"
+  add_foreign_key "locations", "users"
+  add_foreign_key "order_books", "books"
+  add_foreign_key "order_books", "orders"
+  add_foreign_key "orders", "users"
 end

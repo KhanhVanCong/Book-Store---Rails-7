@@ -58,7 +58,9 @@ gem "pagy", "~> 5.10"
 
 gem "enumerize", "~> 2.5"
 
-gem 'rails-controller-testing', '~> 1.0', '>= 1.0.5'
+gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
+
+gem "stripe", "~> 8.5"
 
 group :development, :test do
   gem "factory_bot_rails"

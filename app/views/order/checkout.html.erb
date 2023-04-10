@@ -1,0 +1,12 @@
+<p>Check out page</p>
+
+<%= content_tag :main,
+								data: { controller: "checkout" } do %>
+	<p id="client_secret"><%= @client_secret %></p>
+	<form id="payment-form">
+		<div id="payment-element"></div>
+		<button>Pay</button>
+		<div id="error-messages"></div>
+	</form>
+<% end %>
+

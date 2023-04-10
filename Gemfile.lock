@@ -222,6 +222,7 @@ GEM
       sprockets (>= 3.0.0)
     stimulus-rails (1.1.0)
       railties (>= 6.0.0)
+    stripe (8.5.0)
     strscan (3.0.4)
     thor (1.2.1)
     timeout (0.3.0)
@@ -269,6 +270,7 @@ DEPENDENCIES
   shoulda-matchers (~> 4.5)
   sprockets-rails
   stimulus-rails
+  stripe (~> 8.5)
   turbo-rails
   tzinfo-data
   web-console
