@@ -8,7 +8,6 @@ class CreateOrders < ActiveRecord::Migration[7.0]
       t.string :stripe_payment_intent
       t.string :stripe_charge_id
       t.string :stripe_refund_id
-      t.string :stripe_application_id
 
       t.timestamps
     end

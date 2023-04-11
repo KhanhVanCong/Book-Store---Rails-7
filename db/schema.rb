@@ -164,7 +164,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_155827) do
     t.string "stripe_payment_intent"
     t.string "stripe_charge_id"
     t.string "stripe_refund_id"
-    t.string "stripe_application_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"

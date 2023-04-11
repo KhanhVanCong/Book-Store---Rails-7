@@ -3,8 +3,9 @@ import { Controller } from '@hotwired/stimulus'
 // Connects to data-controller="checkout"
 export default class extends Controller {
   connect () {
-    const stripe = Stripe('pk_test_51MuBZdDoqJ0Gd2j1FjQjpxGvQc5hhBbNS9CnqR2DqL5mqiANCgvRPRgD2uC9UJPlp7v0wc4V2893Hr9ZvgoHQlC900eXG9Py5o')
     const client_secret = document.getElementById('client_secret').innerHTML
+    const stripe_publishable_key = document.getElementById('stripe_publishable_key').innerHTML
+    const stripe = Stripe(stripe_publishable_key)
     debugger
     const elements = stripe.elements({ clientSecret: client_secret })
     const payment_element = elements.create('payment')
@@ -17,13 +18,13 @@ export default class extends Controller {
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: window.location.origin + "/order/complete"
+          return_url: window.location.origin + '/order/complete'
         }
       })
 
-      if(error) {
-        const messages = document.getElementById("error-messages")
-        messages.innerText = error.message;
+      if (error) {
+        const messages = document.getElementById('error-messages')
+        messages.innerText = error.message
       }
     })
   }

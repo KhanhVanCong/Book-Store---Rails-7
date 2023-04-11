@@ -1,8 +1,10 @@
 <p>Check out page</p>
-
+<h3>Order Id: <%= @order.id %></h3>
+<h3>Total Price: <%= @order.total_price %></h3>
 <%= content_tag :main,
 								data: { controller: "checkout" } do %>
-	<p id="client_secret"><%= @client_secret %></p>
+	<p id="client_secret" class="d-none"><%= @client_secret %></p>
+	<p id="stripe_publishable_key" class="d-none"><%= @stripe_publishable_key %></p>
 	<form id="payment-form">
 		<div id="payment-element"></div>
 		<button>Pay</button>
