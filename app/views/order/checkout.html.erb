@@ -1,5 +1,5 @@
 <p>Check out page</p>
-<h3>Order Id: <%= @order.id %></h3>
+<h3>Order Id: <span id="order_id"><%= @order.id %></span></h3>
 <h3>Total Price: <%= @order.total_price %></h3>
 <%= content_tag :main,
 								data: { controller: "checkout" } do %>

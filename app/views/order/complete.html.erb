@@ -1,1 +1,6 @@
-<p><%= @payment_intent %></p>
+<p>Thank you for your order</p>
+<p>Order Id: <%= @order.id %></p>
+<p>Total Price: <%= @order.total_price %></p>
+<p>Status: <%= @order.status %></p>
+
+<%= link_to "My orders", orders_path %>

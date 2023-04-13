@@ -136,7 +136,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_155827) do
   end
 
   create_table "locations", force: :cascade do |t|
-    t.string "address"
+    t.string "address", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -144,7 +144,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_155827) do
   end
 
   create_table "order_books", force: :cascade do |t|
-    t.bigint "order_id", null: false
+    t.string "order_id", null: false
     t.bigint "book_id", null: false
     t.string "book_title"
     t.decimal "price_per_unit"
@@ -156,14 +156,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_06_155827) do
     t.index ["order_id"], name: "index_order_books_on_order_id"
   end
 
-  create_table "orders", force: :cascade do |t|
-    t.bigint "user_id", null: false
-    t.decimal "total_price"
-    t.string "shipping_address"
-    t.string "status"
+  create_table "orders", id: :string, force: :cascade do |t|
+    t.decimal "total_price", null: false
+    t.string "shipping_address", null: false
+    t.string "status", null: false
     t.string "stripe_payment_intent"
     t.string "stripe_charge_id"
     t.string "stripe_refund_id"
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_orders_on_user_id"

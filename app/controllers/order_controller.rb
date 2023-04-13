@@ -3,6 +3,10 @@ class OrderController < ApplicationController
   before_action :authenticate_user!
   before_action :current_user_cart
 
+  def index
+    @orders = current_user_orders.order(created_at: :desc)
+  end
+
   def show
     @books = @cart.books
     @total_price = @books.sum(&:price)
@@ -29,6 +33,7 @@ class OrderController < ApplicationController
             quantity: 1
           )
         end
+
         @order.save!
 
         payment_intent = Stripe::PaymentIntent.create(
@@ -43,7 +48,7 @@ class OrderController < ApplicationController
         )
         @client_secret = payment_intent.client_secret
         @stripe_publishable_key = ENV["STRIPE_PUBLISHABLE_KEY"]
-        @order.stripe_payment_intent = @client_secret
+        @order.stripe_payment_intent = payment_intent.id
         @order.save!
       end
     rescue => e
@@ -52,7 +57,7 @@ class OrderController < ApplicationController
   end
 
   def complete
-    @payment_intent = Stripe::PaymentIntent.retrieve(params[:payment_intent])
+    @order = current_user_orders.find_by(id: params[:id])
   end
 
   private
@@ -63,5 +68,9 @@ class OrderController < ApplicationController
 
     def order_params
       params.require(:order).permit(:shipping_address)
+    end
+
+    def current_user_orders
+      current_user.orders
     end
 end
