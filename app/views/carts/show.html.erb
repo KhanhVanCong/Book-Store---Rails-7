@@ -3,7 +3,7 @@
 		<p><%= book.title %></p>
 	<% end %>
 	<p>Total price: <%= @total_price %></p>
-	<%= link_to "Checkout", order_show_path %>
+	<%= link_to "Checkout", order_checkout_path %>
 	<%= button_to "Empty Cart", empty_cart_path, method: :delete %>
 <% else %>
 	You don't add any books in your cart

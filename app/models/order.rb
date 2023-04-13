@@ -10,17 +10,47 @@ class Order < ApplicationRecord
   validates :total_price, presence: true
 
   before_create :generate_id
-  after_update_commit :send_emails, if: :fresh_confirmed?
+  after_update_commit :send_emails_for_confirmed_order, if: :fresh_confirmed?
+  after_update_commit :send_emails_for_cancelled_order, if: :fresh_cancelled?
 
   def fresh_confirmed?
     self.previous_changes.has_key?(:status) && self.confirmed?
+  end
+
+  def fresh_cancelled?
+    self.previous_changes.has_key?(:status) && self.cancelled?
   end
 
   def display_created_at
     created_at.strftime(Constants::FULL_TIME_FORMAT_FOR_DISPLAY).squish
   end
 
+  def available_for_cancel?
+    if status.in?(%w[completed failed cancelled]) ||
+      (status == :confirmed && created_at < Time.zone.now - Constants::ORDER_CANCELLATION_BUFFER_HOURS.hours)
+      return false
+    end
+    return true
+  end
+
+  def refund_for_customer
+    refund = nil
+    if status == :confirmed && stripe_charge_id.present?
+      refund = Stripe::Refund.create(
+        charge: self.stripe_charge_id,
+        metadata: {
+          order_id: self.id,
+          user_id: self.user_id,
+          book_ids: self.books.ids.join(","),
+          cancellation_reason: "user cancel"
+        }
+      )
+    end
+    return refund
+  end
+
   private
+
     def generate_id
       random_id = ""
       loop do
@@ -29,8 +59,14 @@ class Order < ApplicationRecord
       end
       self.id = random_id
     end
-    def send_emails
+
+    def send_emails_for_confirmed_order
       OrderMailer.customer_order_confirmed(self).deliver_later
       OrderMailer.inform_new_order_for_admin(self).deliver_later
+    end
+
+    def send_emails_for_cancelled_order
+      OrderMailer.customer_cancelled_order(self).deliver_later
+      OrderMailer.inform_cancelled_order_for_admin(self).deliver_later
     end
 end

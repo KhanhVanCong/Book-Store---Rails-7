@@ -7,11 +7,15 @@ class OrderController < ApplicationController
   end
 
   def show
+    @order = current_user_orders.find_by(id: params[:id])
+  end
+
+  def checkout
     @books = @cart.books
     @total_price = @books.sum(&:price)
   end
 
-  def checkout
+  def payment
     begin
       ActiveRecord::Base.transaction do
         books = @cart.books
@@ -51,7 +55,7 @@ class OrderController < ApplicationController
         @order.save!
       end
     rescue => e
-      redirect_to order_show_path, alert: e.message
+      redirect_to order_checkout_path, alert: e.message
     end
   end
 
@@ -59,14 +63,32 @@ class OrderController < ApplicationController
     @order = current_user_orders.find_by(id: params[:id])
   end
 
-  private
+  def cancel
+    begin
+      @order = current_user.orders.find_by(id: order_params[:id])
+      if @order && @order.available_for_cancel?
+        ActiveRecord::Base.transaction do
+          refund = @order.refund_for_customer
+          @order.status = :cancelled
+          @order.stripe_refund_id = refund.id if refund
+          @order.save!
+        end
+        redirect_to @order
+      else
+        redirect_to orders_path, alert: "This order is not available for cancel"
+      end
+    rescue => e
+      redirect_to orders_path, alert: e.message
+    end
+  end
 
+  private
     def current_user_cart
       @cart = current_user.cart
     end
 
     def order_params
-      params.require(:order).permit(:shipping_address)
+      params.require(:order).permit(:shipping_address, :id)
     end
 
     def current_user_orders

@@ -1,15 +1,8 @@
-<p>Check out page</p>
-
-<% @books.each do |book| %>
-	<p><%= book.title %></p>
-	<p><%= book.price %></p>
-<% end %>
-
-<h3>Total Price: <%= @total_price %></h3>
-
-<%= form_with model: Order, url: order_checkout_path, method: :post, data: { turbo: false } do |form| %>
-	<%= form.label :shipping_address %>
-	<%= form.text_field :shipping_address, class: "form-control" %>
-	<%= button_tag "Payment" %>
+<p>Order id: <%= @order.id %></p>
+<p>Total Price: <%= @order.total_price %></p>
+<p>Status: <%= @order.status %></p>
+<% @order.books.each do |book| %>
+	<p>Book title: <%= book.title %></p>
+	<p>Book price: <%= book.price %></p>
 <% end %>
 

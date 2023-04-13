@@ -1,14 +1,15 @@
 <p>Check out page</p>
-<h3>Order Id: <span id="order_id"><%= @order.id %></span></h3>
-<h3>Total Price: <%= @order.total_price %></h3>
-<%= content_tag :main,
-								data: { controller: "checkout" } do %>
-	<p id="client_secret" class="d-none"><%= @client_secret %></p>
-	<p id="stripe_publishable_key" class="d-none"><%= @stripe_publishable_key %></p>
-	<form id="payment-form">
-		<div id="payment-element"></div>
-		<button>Pay</button>
-		<div id="error-messages"></div>
-	</form>
+
+<% @books.each do |book| %>
+	<p><%= book.title %></p>
+	<p><%= book.price %></p>
+<% end %>
+
+<h3>Total Price: <%= @total_price %></h3>
+
+<%= form_with model: Order, url: order_payment_path, method: :post, data: { turbo: false } do |form| %>
+	<%= form.label :shipping_address %>
+	<%= form.text_field :shipping_address, class: "form-control" %>
+	<%= button_tag "Payment" %>
 <% end %>
 
