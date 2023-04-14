@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Order", type: :request do
-  describe "checkout" do
+  describe "payment" do
     context "when the user does not login" do
       it "will fail" do
-        checkout
+        payment
         expect(response).to have_http_status(:found)
       end
     end
@@ -16,7 +16,7 @@ RSpec.describe "Order", type: :request do
         add_item_to_cart(book.id)
         expect(response).to have_http_status(:ok)
         expect {
-          checkout
+          payment
           expect(response).to have_http_status(:ok)
         }.to change { user.cart.cart_items.count }.from(1).to(0)
         order = assigns(:order)

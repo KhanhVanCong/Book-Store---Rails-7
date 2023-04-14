@@ -1,5 +1,5 @@
 module OrdersHelper
-  def checkout
+  def payment
     post order_payment_path, params: {
       order: {
         shipping_address: "Phan Thiet"
@@ -7,19 +7,11 @@ module OrdersHelper
     }
   end
 
-  # def empty_cart
-  #   delete empty_cart_path
-  # end
-  #
-  # def remove_item_to_cart(book_id)
-  #   delete cart_path, params: {
-  #     cart: {
-  #       book_id: book_id
-  #     }
-  #   }
-  # end
-  #
-  # def get_cart
-  #   get cart_path
-  # end
+  def cancel(order_id)
+    patch order_cancel_path, params: {
+      order: {
+        id: order_id
+      }
+    }
+  end
 end
