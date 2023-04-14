@@ -1,10 +1,10 @@
 require "rails_helper"
 
 RSpec.describe "Order", type: :request do
-  describe "cancel" do
+  describe "reorder" do
     context "when the user does not login" do
       it "will fail" do
-        cancel(1)
+        reorder(1)
         expect(response).to have_http_status(:found)
       end
     end
@@ -18,11 +18,16 @@ RSpec.describe "Order", type: :request do
         payment
         expect(response).to have_http_status(:ok)
         order = assigns(:order)
-        expect {
-          cancel(order.id)
-          expect(response).to have_http_status(:found)
-          order.reload
-        }.to change { order.status }.from("pending").to("cancelled")
+        cancel(order.id)
+        expect(response).to have_http_status(:found)
+        reorder(order.id)
+        expect(response).to have_http_status(:ok)
+        new_order = assigns(:order)
+        expect(new_order.status).to eq "pending"
+        expect(new_order.order_books.count).to eq order.order_books.count
+        expect(new_order.total_price).to eq order.total_price
+        expect(new_order.shipping_address).to eq order.shipping_address
+        expect(new_order.id).not_to eq order.id
       end
     end
   end

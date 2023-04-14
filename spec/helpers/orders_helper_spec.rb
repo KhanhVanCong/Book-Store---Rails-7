@@ -14,4 +14,12 @@ module OrdersHelper
       }
     }
   end
+
+  def reorder(order_id)
+    post order_reorder_path, params: {
+      order: {
+        id: order_id
+      }
+    }
+  end
 end

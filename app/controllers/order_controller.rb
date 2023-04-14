@@ -41,8 +41,8 @@ class OrderController < ApplicationController
 
         payment_intent = Stripe::PaymentIntent.create(
           amount: (total_price * 100).to_i,
-          currency: "SGD",
-          payment_method_types: ["card", "grabpay", "paynow"],
+          currency: Constants::CURRENCY,
+          payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
           metadata: {
             order_id: @order.id,
             user_id: current_user.id,
@@ -61,6 +61,42 @@ class OrderController < ApplicationController
 
   def complete
     @order = current_user_orders.find_by(id: params[:id])
+  end
+
+  def reorder
+    old_order = current_user_orders.find_by(id: order_params[:id])
+    if old_order
+      ActiveRecord::Base.transaction do
+        @order = old_order.deep_clone include: [:order_books], only: [:total_price, :shipping_address]
+        @order.user = current_user
+        @order.status = :pending
+        @order.save!
+
+        book_ids = @order.order_books.collect(&:book_id).join(",")
+        payment_intent = Stripe::PaymentIntent.create(
+          amount: (@order.total_price * 100).to_i,
+          currency: Constants::CURRENCY,
+          payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
+          metadata: {
+            order_id: @order.id,
+            user_id: current_user.id,
+            book_ids: book_ids
+          }
+        )
+        @client_secret = payment_intent.client_secret
+        @stripe_publishable_key = ENV["STRIPE_PUBLISHABLE_KEY"]
+        @order.stripe_payment_intent = payment_intent.id
+        @order.save!
+      end
+
+      if @order
+        render "payment"
+      else
+        redirect_to orders_path, alert: "Something wrong"
+      end
+    else
+      redirect_to orders_path, alert: "Can't not find your order"
+    end
   end
 
   def cancel

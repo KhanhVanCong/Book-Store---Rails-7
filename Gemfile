@@ -62,6 +62,8 @@ gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
 
 gem "stripe", "~> 8.5"
 
+gem "deep_cloneable", "~> 3.2.0"
+
 group :development, :test do
   gem "factory_bot_rails"
   gem "rspec-rails", "~> 5.0.1"

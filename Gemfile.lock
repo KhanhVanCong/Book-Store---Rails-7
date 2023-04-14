@@ -90,6 +90,8 @@ GEM
       rails (> 6.0)
     cssbundling-rails (1.1.1)
       railties (>= 6.0.0)
+    deep_cloneable (3.2.0)
+      activerecord (>= 3.1.0, < 8)
     devise (4.9.0)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -253,6 +255,7 @@ DEPENDENCIES
   bootsnap
   creds_env
   cssbundling-rails
+  deep_cloneable (~> 3.2.0)
   devise (~> 4.9)
   enumerize (~> 2.5)
   factory_bot_rails

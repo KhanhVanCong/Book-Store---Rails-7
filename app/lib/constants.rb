@@ -5,4 +5,6 @@ module Constants
   FULL_TIME_FORMAT_FOR_DISPLAY = "%e %b %Y, %l:%M %p"
   BRAND_NAME = "BS"
   ORDER_CANCELLATION_BUFFER_HOURS = 2
+  CURRENCY = "SGD"
+  STRIPE_PAYMENT_METHODS = ["card", "grabpay", "paynow"]
 end

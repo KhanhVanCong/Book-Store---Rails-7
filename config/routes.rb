@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   get "orders" => "order#index"
   get "order/checkout" => "order#checkout"
   post "order/payment"
+  post "order/reorder"
   get "order/complete"
   patch "order" => "order#cancel", as: :order_cancel
   get "order/:id" => "order#show", as: :order
