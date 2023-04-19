@@ -64,9 +64,13 @@ gem "stripe", "~> 8.5"
 
 gem "deep_cloneable", "~> 3.2.0"
 
+gem "ulid", "~> 1.4"
+
+gem "honeybadger", "~> 5.0"
+
 group :development, :test do
   gem "factory_bot_rails"
-  gem "rspec-rails", "~> 5.0.1"
+  gem "rspec-rails", "~> 6.0", ">= 6.0.1"
   gem "faker", git: "https://github.com/stympy/faker.git", branch: "master"
 end
 
@@ -83,5 +87,5 @@ group :development do
 end
 
 group :test do
-  gem "shoulda-matchers", "~> 4.5"
+  gem "shoulda-matchers", "~> 5.3"
 end

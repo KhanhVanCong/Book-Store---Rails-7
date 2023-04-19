@@ -7,7 +7,6 @@ export default class extends Controller {
     const stripe_publishable_key = document.getElementById("stripe_publishable_key").innerHTML
     const order_id = document.getElementById("order_id").innerHTML
     const stripe = Stripe(stripe_publishable_key)
-    debugger
     const elements = stripe.elements({ clientSecret: client_secret })
     const payment_element = elements.create("payment")
     payment_element.mount("#payment-element")

@@ -6,6 +6,7 @@ RSpec.describe "Order", type: :request do
       it "will fail" do
         cancel(1)
         expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to match("You need to sign in or sign up before continuing.")
       end
     end
 
@@ -23,6 +24,8 @@ RSpec.describe "Order", type: :request do
           expect(response).to have_http_status(:found)
           order.reload
         }.to change { order.status }.from("pending").to("cancelled")
+         .and have_enqueued_mail(OrderMailer, :customer_cancelled_order).with(order).exactly(1)
+         .and have_enqueued_mail(OrderMailer, :inform_cancelled_order_for_admin).with(order).exactly(1)
       end
     end
   end

@@ -23,6 +23,9 @@ RSpec.configure do |config|
   require_relative "helpers/orders_helper_spec"
   config.include OrdersHelper ,type: :request
 
+  require_relative "helpers/stripe_helper_spec"
+  config.include StripeHelper ,type: :request
+
   require_relative "shared_contexts/create_user_and_book_spec"
   config.include_context "example create users and books", :type => :request
   # rspec-expectations config goes here. You can use an alternate

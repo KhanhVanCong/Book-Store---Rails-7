@@ -7,4 +7,7 @@ module Constants
   ORDER_CANCELLATION_BUFFER_HOURS = 2
   CURRENCY = "SGD"
   STRIPE_PAYMENT_METHODS = ["card", "grabpay", "paynow"]
+  WEBHOOK_SECRET = ENV.fetch("STRIPE_WEBHOOK_SIGNING_KEY")
+  STRIPE_PUBLISHABLE_KEY = ENV.fetch("STRIPE_PUBLISHABLE_KEY")
+  MESSAGE_GENERAL_ERROR = "OOPS!!Something wrong here. We are checking "
 end

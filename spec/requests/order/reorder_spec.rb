@@ -6,6 +6,7 @@ RSpec.describe "Order", type: :request do
       it "will fail" do
         reorder(1)
         expect(response).to have_http_status(:found)
+        expect(flash[:alert]).to match("You need to sign in or sign up before continuing.")
       end
     end
 
