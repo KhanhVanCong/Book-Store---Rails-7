@@ -1,0 +1,43 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://localhost:12111/v1/payment_intents
+    body:
+      encoding: UTF-8
+      string: amount=100&currency=SGD&payment_method_types[0]=card&payment_method_types[1]=grabpay&payment_method_types[2]=paynow&metadata[order_id]=01H2ZYDNKM8SXG014JS936CY5W
+    headers:
+      User-Agent:
+      - Stripe/v1 RubyBindings/8.5.0
+      Authorization:
+      - Bearer sk_test_51MuBZdDoqJ0Gd2j1jAFWhwZTjsdCS7YMS7JrfmfPQjyx3BGZ4dyJs38f9SBxvuktyMLJCrLfNFlNWw3fboa18JmQ00GlIGBgyc
+      Content-Type:
+      - application/x-www-form-urlencoded
+      X-Stripe-Client-User-Agent:
+      - '{"bindings_version":"8.5.0","lang":"ruby","lang_version":"3.0.0 p0 (2020-12-25)","platform":"x86_64-darwin21","engine":"ruby","publisher":"stripe","uname":"Darwin
+        Khanhs-MBP.LAN 22.5.0 Darwin Kernel Version 22.5.0: Mon Apr 24 20:51:50 PDT
+        2023; root:xnu-8796.121.2~5/RELEASE_X86_64 x86_64","hostname":"Khanhs-MBP.LAN"}'
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Request-Id:
+      - req_123
+      Stripe-Mock-Version:
+      - 0.164.0
+      Date:
+      - Thu, 15 Jun 2023 16:32:36 GMT
+      Content-Length:
+      - '954'
+    body:
+      encoding: UTF-8
+      string: '{"amount":100,"amount_capturable":0,"amount_details":{"tip":{}},"amount_received":0,"application":null,"application_fee_amount":null,"automatic_payment_methods":null,"canceled_at":1234567890,"cancellation_reason":null,"capture_method":"automatic","client_secret":"pi_1Mxz5qArWMVfByDX3OnGAH6C_secret_vwCfixTMI9kB9b9fodekFSQ4V","confirmation_method":"automatic","created":1234567890,"currency":"SGD","customer":null,"description":null,"id":"pi_KrYwOb9wsZpgsxT","invoice":null,"last_payment_error":null,"latest_charge":null,"livemode":false,"metadata":{},"next_action":null,"object":"payment_intent","on_behalf_of":null,"payment_method":null,"payment_method_options":{},"payment_method_types":["card","grabpay","paynow"],"processing":null,"receipt_email":null,"review":null,"setup_future_usage":null,"shipping":null,"statement_descriptor":null,"statement_descriptor_suffix":null,"status":"requires_payment_method","transfer_data":null,"transfer_group":null}'
+  recorded_at: Thu, 15 Jun 2023 16:32:36 GMT
+recorded_with: VCR 6.1.0

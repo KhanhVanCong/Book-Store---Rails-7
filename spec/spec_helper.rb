@@ -27,7 +27,8 @@ RSpec.configure do |config|
   config.include StripeHelper ,type: :request
 
   require_relative "shared_contexts/create_user_and_book_spec"
-  config.include_context "example create users and books", :type => :request
+  config.include_context "example create users and books", type: :request
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

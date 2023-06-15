@@ -13,7 +13,7 @@
 			<% end %>
 		<% end %>
 
-		<%= form_with model: order, url: order_reorder_path, method: :post, data: { turbo: false } do |form| %>
+		<%= form_with model: order, url: orders_reorder_path, method: :post, data: { turbo: false } do |form| %>
 			<%= form.hidden_field :id %>
 			<%= button_tag "Reorder" %>
 		<% end %>

@@ -16,22 +16,20 @@ class Order < ApplicationRecord
   end
 
   def available_for_cancel?
-    if status.in?(%w[completed failed cancelled]) ||
-      (status == :confirmed && created_at < Time.current - Constants::ORDER_CANCELLATION_BUFFER_HOURS.hours)
-      return false
-    end
-    return true
+    %w[completed failed cancelled].exclude?(status) &&
+      (
+        status != :confirmed ||
+          created_at > Time.current - Constants::ORDER_CANCELLATION_BUFFER_HOURS.hours
+      )
   end
 
   def refund_for_customer
-    refund = nil
     if status == :confirmed && stripe_charge_id.present?
-      refund = Stripe::Refund.create(
+      Stripe::Refund.create(
         charge: self.stripe_charge_id,
         metadata: { order_id: self.id, cancellation_reason: "user cancel" }
       )
     end
-    return refund
   end
 
   private

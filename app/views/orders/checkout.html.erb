@@ -7,7 +7,7 @@
 
 <h3>Total Price: <%= @total_price %></h3>
 
-<%= form_with model: Order, url: order_payment_path, method: :post, data: { turbo: false } do |form| %>
+<%= form_with model: Order, url: orders_payment_path, method: :post, data: { turbo: false } do |form| %>
 	<%= form.label :shipping_address %>
 	<%= form.text_field :shipping_address, class: "form-control" %>
 	<%= button_tag "Payment" %>

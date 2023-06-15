@@ -1,4 +1,4 @@
-class OrderMailer < ApplicationMailer
+class OrdersMailer < ApplicationMailer
   def customer_order_confirmed(order)
     user = order.user
     mail(to: user.email,

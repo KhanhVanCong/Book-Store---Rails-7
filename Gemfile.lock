@@ -79,12 +79,16 @@ GEM
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
       tzinfo (~> 2.0)
+    addressable (2.8.4)
+      public_suffix (>= 2.0.2, < 6.0)
     bcrypt (3.1.18)
     bindex (0.8.1)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     builder (3.2.4)
     concurrent-ruby (1.1.10)
+    crack (0.4.5)
+      rexml
     crass (1.0.6)
     creds_env (0.1.0)
       rails (> 6.0)
@@ -112,6 +116,7 @@ GEM
     foreman (0.87.2)
     globalid (1.0.0)
       activesupport (>= 5.0)
+    hashdiff (1.0.1)
     honeybadger (5.2.1)
     i18n (1.12.0)
       concurrent-ruby (~> 1.0)
@@ -154,6 +159,7 @@ GEM
     pagy (5.10.1)
       activesupport
     pg (1.4.3)
+    public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -195,6 +201,7 @@ GEM
     responders (3.1.0)
       actionpack (>= 5.2)
       railties (>= 5.2)
+    rexml (3.2.5)
     rspec-core (3.12.2)
       rspec-support (~> 3.12.0)
     rspec-expectations (3.12.3)
@@ -236,6 +243,7 @@ GEM
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     ulid (1.4.0)
+    vcr (6.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.2.0)
@@ -243,6 +251,10 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
+    webmock (3.18.1)
+      addressable (>= 2.8.0)
+      crack (>= 0.3.2)
+      hashdiff (>= 0.4.0, < 2.0.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
@@ -280,7 +292,9 @@ DEPENDENCIES
   turbo-rails
   tzinfo-data
   ulid (~> 1.4)
+  vcr (~> 6.1)
   web-console
+  webmock (~> 3.18, >= 3.18.1)
 
 RUBY VERSION
    ruby 3.0.0p0

@@ -18,7 +18,7 @@ export default class extends Controller {
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
-          return_url: `${window.location.origin}/order/complete?id=${order_id}`
+          return_url: `${window.location.origin}/orders/complete?id=${order_id}`
         }
       })
 

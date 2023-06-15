@@ -17,7 +17,7 @@ class StripeController < ApplicationController
           order.status = :confirmed
           order.stripe_charge_id = event_data.latest_charge
           order.save
-          Orders::SendEmailsForConfirmedOrder.call(order) if order
+          Orders::SendEmailsForConfirmedOrder.call(order)
         end
       when "payment_intent.payment_failed"
         order = Order.find_by(id: metadata.order_id)

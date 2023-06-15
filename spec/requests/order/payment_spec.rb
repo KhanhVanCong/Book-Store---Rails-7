@@ -29,8 +29,8 @@ RSpec.describe "Order", type: :request do
           post_stripe_hook(payload)
           order.reload
         }.to change { order.status }.from("pending").to("confirmed")
-         .and have_enqueued_mail(OrderMailer, :customer_order_confirmed).with(order).exactly(1)
-         .and have_enqueued_mail(OrderMailer, :inform_new_order_for_admin).with(order).exactly(1)
+         .and have_enqueued_mail(OrdersMailer, :customer_order_confirmed).with(order).exactly(1)
+         .and have_enqueued_mail(OrdersMailer, :inform_new_order_for_admin).with(order).exactly(1)
       end
 
       it "will fail after unsuccessful payment" do

@@ -1,4 +1,4 @@
-class OrderController < ApplicationController
+class OrdersController < ApplicationController
   before_action :authenticate_user!
   before_action :current_user_cart
 
@@ -8,6 +8,7 @@ class OrderController < ApplicationController
 
   def show
     @order = current_user_orders.find_by(id: params[:id])
+    redirect_to root_path, alert: ErrorDescriptions::Error_List[:ORDER_NOT_FOUND] unless @order
   end
 
   def checkout
@@ -37,26 +38,31 @@ class OrderController < ApplicationController
           )
         end
 
-        @order.save!
+        @order.save
       end
 
-      payment_intent = Stripe::PaymentIntent.create(
-        amount: (total_price * 100).to_i,
-        currency: Constants::CURRENCY,
-        payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
-        metadata: { order_id: @order.id }
-      )
-      @client_secret = payment_intent.client_secret
-      @order.stripe_payment_intent = payment_intent.id
-      @order.save!
+      if @order.valid?
+        payment_intent = Stripe::PaymentIntent.create(
+          amount: (total_price * 100).to_i,
+          currency: Constants::CURRENCY,
+          payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
+          metadata: { order_id: @order.id }
+        )
+        @client_secret = payment_intent.client_secret
+        @order.stripe_payment_intent = payment_intent.id
+        @order.save
+      else
+        redirect_to orders_checkout_path, alert: @order.errors.full_messages.join(", ")
+      end
     rescue Stripe::InvalidRequestError => e
       err_message = handle_stripe_error_messages(e)
-      redirect_to order_checkout_path, alert: err_message
+      redirect_to orders_checkout_path, alert: err_message
     end
   end
 
   def complete
     @order = current_user_orders.find_by(id: params[:id])
+    redirect_to root_path, alert: ErrorDescriptions::Error_List[:ORDER_NOT_FOUND] unless @order
   end
 
   def reorder
@@ -66,25 +72,33 @@ class OrderController < ApplicationController
         @order = old_order.deep_clone include: [:order_books], only: [:total_price, :shipping_address]
         @order.user = current_user
         @order.status = :pending
-        @order.save!
+        @order.save
 
-        payment_intent = Stripe::PaymentIntent.create(
-          amount: (@order.total_price * 100).to_i,
-          currency: Constants::CURRENCY,
-          payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
-          metadata: { order_id: @order.id }
-        )
-        @client_secret = payment_intent.client_secret
-        @order.stripe_payment_intent = payment_intent.id
-        @order.save!
+        if @order.valid?
+          payment_intent = Stripe::PaymentIntent.create(
+            amount: (@order.total_price * 100).to_i,
+            currency: Constants::CURRENCY,
+            payment_method_types: Constants::STRIPE_PAYMENT_METHODS,
+            metadata: { order_id: @order.id }
+          )
+          @client_secret = payment_intent.client_secret
+          @order.stripe_payment_intent = payment_intent.id
+          @order.save
 
-        render "payment"
+          if @order.valid?
+            render "payment"
+          else
+            redirect_to orders_checkout_path, alert: @order.errors.full_messages.join(", ")
+          end
+        else
+          redirect_to orders_checkout_path, alert: @order.errors.full_messages.join(", ")
+        end
       rescue Stripe::InvalidRequestError => e
         err_message = handle_stripe_error_messages(e)
         redirect_to orders_path, alert: err_message
       end
     else
-      redirect_to orders_path, alert: "Can't not find your order"
+      redirect_to orders_path, alert: ErrorDescriptions::Error_List[:ORDER_NOT_FOUND]
     end
   end
 
@@ -95,11 +109,11 @@ class OrderController < ApplicationController
         refund = @order.refund_for_customer
         @order.status = :cancelled
         @order.stripe_refund_id = refund.id if refund
-        @order.save!
+        @order.save
         Orders::SendEmailsForCancelledOrder.call(@order)
         redirect_to @order
       else
-        redirect_to orders_path, alert: "This order is not available for cancel"
+        redirect_to orders_path, alert: ErrorDescriptions::Error_List[:NOT_AVAILABLE_FOR_CANCEL]
       end
     rescue => e
       Honeybadger.notify(e)
@@ -124,7 +138,7 @@ class OrderController < ApplicationController
       err_code = err.json_body[:error][:code]
       case err_code
       when "amount_too_small"
-        err_message = "Min. amount must be $0.50"
+        err_message = ErrorDescriptions::Error_List[:MIN_AMOUNT_MUST_BE_0_5]
       else
         err_message = err.message
       end

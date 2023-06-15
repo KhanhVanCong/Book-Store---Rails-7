@@ -20,13 +20,13 @@ Rails.application.routes.draw do
   delete "cart" => "carts#remove_item"
   delete "empty_cart" => "carts#empty_cart"
 
-  get "orders" => "order#index"
-  get "order/checkout" => "order#checkout"
-  post "order/payment"
-  post "order/reorder"
-  get "order/complete"
-  patch "order" => "order#cancel", as: :order_cancel
-  get "order/:id" => "order#show", as: :order
+  get "orders" => "orders#index"
+  get "orders/checkout" => "orders#checkout"
+  post "orders/payment"
+  post "orders/reorder"
+  get "orders/complete"
+  patch "orders" => "orders#cancel", as: :order_cancel
+  get "orders/:id" => "orders#show", as: :order
 
   post "stripe/webhook"
 
