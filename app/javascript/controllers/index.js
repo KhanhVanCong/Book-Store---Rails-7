@@ -4,8 +4,8 @@
 
 import { application } from "./application"
 
-import CartController from "./cart_controller"
-application.register("cart", CartController)
+import CheckoutController from "./checkout_controller"
+application.register("checkout", CheckoutController)
 
 import FlashController from "./flash_controller"
 application.register("flash", FlashController)

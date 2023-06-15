@@ -1,0 +1,21 @@
+<% @orders.each do |order| %>
+	<div class="border border-secondary">
+		<p>Order id: <%= order.id %></p>
+		<p>Status: <%= order.status %></p>
+		<p>Price: <%= order.total_price %></p>
+		<p>Shipping address: <%= order.shipping_address %></p>
+		<p>Created_at: <%= order.display_created_at %></p>
+		<%= link_to "Details", order %>
+		<% if order.available_for_cancel? %>
+			<%= form_with model: order, url: order_cancel_path, method: :patch, data: { turbo_confirm: "Are you sure?" } do |form| %>
+				<%= form.hidden_field :id %>
+				<%= button_tag "Cancel" %>
+			<% end %>
+		<% end %>
+
+		<%= form_with model: order, url: orders_reorder_path, method: :post, data: { turbo: false } do |form| %>
+			<%= form.hidden_field :id %>
+			<%= button_tag "Reorder" %>
+		<% end %>
+	</div>
+<% end %>
